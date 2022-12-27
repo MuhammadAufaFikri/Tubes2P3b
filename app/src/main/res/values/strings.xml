@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">appUnpar</string>
+    <string name="login_text"><b>UNIVERSITAS KATOLIK PARAHYANGAN</b></string>
+    <string name="login_text2"><b>Single Sign On</b></string>
 </resources>
