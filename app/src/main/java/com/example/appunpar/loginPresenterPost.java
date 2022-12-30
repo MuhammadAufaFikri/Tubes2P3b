@@ -24,9 +24,9 @@ public class loginPresenterPost {
         this.ui = ui;
     }
 
-    public void execute(String username, String password) throws JSONException{
+    public void execute(String username, String password, String role) throws JSONException{
         this.gson = new Gson();
-        loginInput input = new loginInput(username, password);
+        loginInput input = new loginInput(username, password,role);
         JSONObject objJSON = new JSONObject(gson.toJson(input));
         this.callVolley(objJSON);
     }

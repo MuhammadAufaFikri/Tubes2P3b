@@ -3,10 +3,12 @@ package com.example.appunpar;
 public class loginInput {
     private String username;
     private String password;
+    private String role;
 
-    public loginInput(String username, String pass){
+    public loginInput(String username, String pass,String role){
         this.username = username;
         this.password = pass;
+        this.role= role;
     }
 
     public String getPassword() {
