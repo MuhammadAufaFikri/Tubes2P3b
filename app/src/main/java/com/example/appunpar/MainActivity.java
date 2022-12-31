@@ -20,7 +20,7 @@ public class MainActivity extends AppCompatActivity implements FragmentResultLis
     private pertemuanFragment pertemuan;
     private detailPertemuanFragment detailPertemuan;
     private buatPertemuanFragment buatPertemuan;
-    private lihatJadwalFragment lihatJadwal;
+    private lihatJadwalDosenFragment lihatJadwalDosen;
     private frsFragment frs;
     private hitoryFRSfragment hitoryFRS;
     private detailMatkulFragment detailMatkul;
@@ -34,7 +34,21 @@ public class MainActivity extends AppCompatActivity implements FragmentResultLis
         setContentView(this.binding.getRoot());
 
         this.login = loginFragment.newInstance("Fragment login");
+        this.home = homeFragment.newInstance("Fragment home");
+        this.pengumuman= pengumumanFragment.newInstance("Fragment Pengumuman");
+        this.detailPengumuman = detailPengumumanFragment.newInstance("Fragment detail pengumuman");
+        this.buatPengumuman = buatPengumumanFragment.newInstance("Fragment buat pengumuman");
+        this.pertemuan = pertemuanFragment.newInstance("Fragment pertemuan");
+        this.detailPertemuan= detailPertemuanFragment.newInstance("Fragment detail pertemuan");
+        this.buatPertemuan= buatPertemuanFragment.newInstance("Fragment buat pertemuan");
+        this.lihatJadwalDosen = lihatJadwalDosenFragment.newInstance("Fragment lihat jadwal dosen");
+        this.frs= frsFragment.newInstance("Fragment frs");
+        this.hitoryFRS= hitoryFRSfragment.newInstance("Fragment history frs");
+        this.detailMatkul= detailMatkulFragment.newInstance("Fragment detail matkul");
 
+        // khusus admin
+        this.adminListUser= adminListUserFragment.newInstance("Fragment list user");
+        this.adminBuatUser= adminBuatUserFragment.newInstance("Fragment buat user");
 
 
         this.fragmentManager = this.getSupportFragmentManager();
