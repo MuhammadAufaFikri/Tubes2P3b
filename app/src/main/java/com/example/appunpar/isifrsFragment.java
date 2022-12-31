@@ -1,4 +1,5 @@
 package com.example.appunpar;
 
-public class isifrsFragment {
+import androidx.fragment.app.Fragment;
+public class isifrsFragment  extends Fragment{
 }

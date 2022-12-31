@@ -1,4 +1,5 @@
 package com.example.appunpar;
 
-public class hitoryFRSfragment {
+import androidx.fragment.app.Fragment;
+public class hitoryFRSfragment  extends Fragment{
 }

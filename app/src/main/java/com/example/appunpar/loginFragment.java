@@ -54,11 +54,22 @@ public class loginFragment extends Fragment implements View.OnClickListener, log
     public void onClick(View view) {
         if(this.binding.etAcount.getText().length() == 0 || this.binding.etPass.getText().length() == 0){
             // AlertDialo
-        }else{
+        }else if(this.binding.btnLogin==view){
             this.username = this.binding.etAcount.getText().toString();
             String password = this.binding.etPass.getText().toString();
+            String role= "student";
             try {
-                presenter.execute(username, password);
+                presenter.execute(username, password,role);
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
+        else if(this.binding.btnAcount==view){
+            String email = "default.admin@domain.local";
+            String password = "mu8XyUogLi6Dk7";
+            String role = "admin";
+            try {
+                presenter.execute(email, password,role);
             } catch (JSONException e) {
                 e.printStackTrace();
             }

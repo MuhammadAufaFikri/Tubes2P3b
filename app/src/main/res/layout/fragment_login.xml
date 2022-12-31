@@ -75,5 +75,14 @@
             android:textColor="@color/black">
 
         </Button>
+
+        <!-- hilangkan nanti kalo gak dipake karena cuma untuk lihat list akun-->
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/btnAcount"
+            android:text="listAcount"
+            />
+        <!-- -->
     </LinearLayout>
 </RelativeLayout>

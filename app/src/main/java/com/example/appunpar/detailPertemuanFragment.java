@@ -1,4 +1,4 @@
 package com.example.appunpar;
-
-public class detailPertemuanFragment {
+import androidx.fragment.app.Fragment;
+public class detailPertemuanFragment  extends Fragment {
 }

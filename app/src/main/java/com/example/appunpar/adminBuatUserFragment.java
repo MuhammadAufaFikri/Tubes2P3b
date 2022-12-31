@@ -1,4 +1,5 @@
 package com.example.appunpar;
 
-public class adminBuatUserFragment {
+import androidx.fragment.app.Fragment;
+public class adminBuatUserFragment extends Fragment{
 }
