@@ -16,7 +16,7 @@ public class MainActivity extends AppCompatActivity implements FragmentResultLis
     private homeFragment home;
     private pengumumanFragment pengumuman;
     private detailPengumumanFragment detailPengumuman;
-    private buatPengumumanfragment buatPengumuman;
+    private buatPengumumanFragment buatPengumuman;
     private pertemuanFragment pertemuan;
     private detailPertemuanFragment detailPertemuan;
     private buatPertemuanFragment buatPertemuan;
