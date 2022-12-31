@@ -24,6 +24,8 @@ public class MainActivity extends AppCompatActivity implements FragmentResultLis
     private frsFragment frs;
     private hitoryFRSfragment hitoryFRS;
     private detailMatkulFragment detailMatkul;
+    private adminBuatUserFragment adminBuatUser;
+    private adminListUserFragment adminListUser;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +34,7 @@ public class MainActivity extends AppCompatActivity implements FragmentResultLis
         setContentView(this.binding.getRoot());
 
         this.login = loginFragment.newInstance("Fragment login");
+
 
 
         this.fragmentManager = this.getSupportFragmentManager();

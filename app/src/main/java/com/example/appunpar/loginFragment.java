@@ -53,7 +53,7 @@ public class loginFragment extends Fragment implements View.OnClickListener, log
     @Override
     public void onClick(View view) {
         if(this.binding.etAcount.getText().length() == 0 || this.binding.etPass.getText().length() == 0){
-            // AlertDialo
+            // AlertDialog nanti
         }else if(this.binding.btnLogin==view){
             this.username = this.binding.etAcount.getText().toString();
             String password = this.binding.etPass.getText().toString();
