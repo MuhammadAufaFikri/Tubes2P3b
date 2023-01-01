@@ -6,7 +6,7 @@ import android.content.SharedPreferences;
 public class cacheLoginDisplay {
     protected SharedPreferences sharedPref;
     protected final static String NAMA_SHARED_PREF = "sp_login_display";
-    protected final static String KEY_USERNAME = "USERNAME";
+    protected final static String KEY_EMAIL = "EMAIL";
     protected final static String KEY_PASSWORD = "PASSWORD";
     protected Context context;
 
@@ -15,9 +15,9 @@ public class cacheLoginDisplay {
         this.context = context;
     }
 
-    public void saveUsername(String username) {
+    public void saveEmail(String email) {
         SharedPreferences.Editor editor = this.sharedPref.edit();
-        editor.putString(KEY_USERNAME, username);
+        editor.putString(KEY_EMAIL, email);
         editor.commit();
     }
 
@@ -27,8 +27,8 @@ public class cacheLoginDisplay {
         editor.commit();
     }
 
-    public String getUsername(){
-        return sharedPref.getString(KEY_USERNAME, "");
+    public String getEmail(){
+        return sharedPref.getString(KEY_EMAIL, "");
     }
 
     public String getPassword(){ return sharedPref.getString(KEY_PASSWORD, "");

@@ -16,7 +16,7 @@ import org.json.JSONException;
 public class loginFragment extends Fragment implements View.OnClickListener, loginPresenterPost.LoginInterface{
     protected FragmentLoginBinding binding;
     protected loginPresenterPost presenter;
-    private String username;
+    private String email;
     private cacheLoginDisplay pencatat;
 
     public static loginFragment newInstance(String title){
@@ -39,14 +39,14 @@ public class loginFragment extends Fragment implements View.OnClickListener, log
     @Override
     public void onPause() {
         super.onPause();
-        this.pencatat.saveUsername(this.binding.etAcount.getText().toString());
+        this.pencatat.saveEmail(this.binding.etAcount.getText().toString());
         this.pencatat.savePassword(this.binding.etPass.getText().toString());
     }
 
     @Override
     public void onResume() {
         super.onResume();
-        this.binding.etAcount.setText(this.pencatat.getUsername());
+        this.binding.etAcount.setText(this.pencatat.getEmail());
         this.binding.etPass.setText(this.pencatat.getPassword());
     }
 
@@ -55,11 +55,11 @@ public class loginFragment extends Fragment implements View.OnClickListener, log
         if(this.binding.etAcount.getText().length() == 0 || this.binding.etPass.getText().length() == 0){
             // AlertDialog nanti
         }else if(this.binding.btnLogin==view){
-            this.username = this.binding.etAcount.getText().toString();
+            this.email = this.binding.etAcount.getText().toString();
             String password = this.binding.etPass.getText().toString();
             String role= "student";
             try {
-                presenter.execute(username, password,role);
+                presenter.execute(email, password,role);
             } catch (JSONException e) {
                 e.printStackTrace();
             }
@@ -77,16 +77,26 @@ public class loginFragment extends Fragment implements View.OnClickListener, log
     }
 
     @Override
-    public void validate(String token, String message) {
+    public void validateStudent(String token, String message) {
         Bundle result = new Bundle();
         result.putInt("page",2);//pindah ke home
         result.putString("token", token);
-        result.putString("username", this.username);
+        result.putString("email", this.email);
         this.getParentFragmentManager().setFragmentResult("homePage", result);
         this.getParentFragmentManager().setFragmentResult("changePage",result);
     }
 
-    public void failed(){
+    @Override
+    public void validateAdmin(String token, String message) {
+        Bundle result = new Bundle();
+        result.putInt("page",13);//pindah ke home
+        result.putString("token", token);
+        result.putString("email", this.email);
+        this.getParentFragmentManager().setFragmentResult("listUserPage", result);
+        this.getParentFragmentManager().setFragmentResult("changePage",result);
+    }
 
+    public void failed(){
+        //alert
     }
 }

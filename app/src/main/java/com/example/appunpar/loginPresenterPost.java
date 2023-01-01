@@ -1,6 +1,7 @@
 package com.example.appunpar;
 
 import android.content.Context;
+import android.util.Log;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -17,16 +18,19 @@ public class loginPresenterPost {
     final String BASE_URL = "https://ifportal.labftis.net/api/v1/authenticate";
     private Context context;
     private Gson gson;
+    private String role;
     private LoginInterface ui;
 
     public loginPresenterPost(Context context, LoginInterface ui) {
         this.context = context;
         this.ui = ui;
+        this.role="";
     }
 
-    public void execute(String username, String password, String role) throws JSONException{
+    public void execute(String email, String password, String role) throws JSONException{
         this.gson = new Gson();
-        loginInput input = new loginInput(username, password,role);
+        this.role= role;
+        loginInput input = new loginInput(email, password,role);
         JSONObject objJSON = new JSONObject(gson.toJson(input));
         this.callVolley(objJSON);
     }
@@ -38,11 +42,13 @@ public class loginPresenterPost {
                     @Override
                     public void onResponse(JSONObject response) {
                         processResult(response.toString());
+                        Log.d("token user post", "token dibuat");
                     }
                 }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
                 ui.failed();
+                Log.d("token gagal", error.toString());
             }
         });
 
@@ -50,15 +56,21 @@ public class loginPresenterPost {
     }
 
     private void processResult(String json){
-
         loginResult result =  gson.fromJson(json, loginResult.class);
         String res = result.getPesan();
         String token =result.getToken();
-        this.ui.validate(token, res);
+        if(this.role=="student"){
+            this.ui.validateStudent(token, res);
+        }
+        else {
+            this.ui.validateAdmin(token, res);
+        }
+
     }
 
     interface LoginInterface {
-        public void validate(String token, String message);
+        public void validateStudent(String token, String message);
+        public void validateAdmin(String token, String message);
         public void failed();
     }
 }
