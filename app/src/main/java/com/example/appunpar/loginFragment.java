@@ -1,6 +1,7 @@
 package com.example.appunpar;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -28,6 +29,7 @@ public class loginFragment extends Fragment implements View.OnClickListener, log
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
         this.binding = FragmentLoginBinding.inflate(inflater,container,false);
         this.binding.btnLogin.setOnClickListener(this);
+        this.binding.btnAcount.setOnClickListener(this);
         View view = this.binding.getRoot();
         this.presenter = new loginPresenterPost(this.getContext(),this);
         this.pencatat = new cacheLoginDisplay(this.getContext());

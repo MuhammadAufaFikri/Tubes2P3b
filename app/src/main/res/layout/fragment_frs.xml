@@ -96,7 +96,7 @@
                 android:textSize="20dp"
                 android:textStyle="bold"
                 android:layout_gravity="center"
-                android:textColor="@color/bpDarker_red"
+                android:textColor="@color/bpRed"
                 android:textAlignment="center">
 
             </TextView>

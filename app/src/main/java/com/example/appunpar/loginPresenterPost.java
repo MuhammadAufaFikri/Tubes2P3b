@@ -27,11 +27,13 @@ public class loginPresenterPost {
     }
 
     public void execute(String email, String password, String role) throws JSONException{
+        Log.d("execute","tereksekusi");
         this.gson = new Gson();
         this.role= role;
         loginInput input = new loginInput(email, password,role);
         JSONObject objJSON = new JSONObject(gson.toJson(input));
         this.callVolley(objJSON);
+
     }
 
     private void callVolley(JSONObject toJson) {
@@ -41,13 +43,13 @@ public class loginPresenterPost {
                     @Override
                     public void onResponse(JSONObject response) {
                         processResult(response.toString());
-                        Log.d("token user post", "token dibuat");
+                        Log.d("tokenuserpost", "token dibuat");
                     }
                 }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
                 ui.failed();
-                Log.d("token gagal", error.toString());
+                Log.d("tokengagal", error.toString());
             }
         });
 
