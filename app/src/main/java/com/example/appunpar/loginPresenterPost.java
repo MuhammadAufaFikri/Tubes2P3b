@@ -24,7 +24,6 @@ public class loginPresenterPost {
     public loginPresenterPost(Context context, LoginInterface ui) {
         this.context = context;
         this.ui = ui;
-        this.role="";
     }
 
     public void execute(String email, String password, String role) throws JSONException{
