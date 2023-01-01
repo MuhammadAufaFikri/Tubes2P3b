@@ -186,15 +186,18 @@
                 android:textStyle="bold"></TextView>
         </LinearLayout>
 
-        <Button
-            android:layout_marginTop="20dp"
-            android:layout_width="200sp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center|bottom"
 
-            android:text="simpan"
-            android:backgroundTint="@color/yellow"
-            android:textColor="@color/black">
-        </Button>
     </LinearLayout>
+    <Button
+        android:layout_marginBottom="30dp"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center|bottom"
+        android:layout_alignParentBottom="true"
+        android:layout_centerInParent="true"
+
+        android:text="simpan"
+        android:backgroundTint="@color/yellow"
+        android:textColor="@color/black">
+    </Button>
 </RelativeLayout>
