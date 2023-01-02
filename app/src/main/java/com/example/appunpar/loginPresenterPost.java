@@ -27,7 +27,7 @@ public class loginPresenterPost {
     }
 
     public void execute(String email, String password, String role) throws JSONException{
-        Log.d("execute","tereksekusi");
+        Log.d("execute","tereksekusicode");
         this.gson = new Gson();
         this.role= role;
         loginInput input = new loginInput(email, password,role);
