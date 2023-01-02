@@ -72,7 +72,7 @@ public class MainActivity extends AppCompatActivity implements FragmentResultLis
     }
     private void changePage(int page){
         FragmentTransaction ft = this.fragmentManager.beginTransaction();
-        //1.login
+        //1.login halaman
         if (page==1){
             if(this.login.isAdded()){
                 ft.show(this.login);
