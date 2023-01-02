@@ -52,7 +52,7 @@ public class loginFragment extends Fragment implements View.OnClickListener, log
 
     @Override
     public void onClick(View view) {
-        if(this.binding.etAcount.getText().length() == 0 || this.binding.etPass.getText().length() == 0){
+        if((this.binding.etAcount.getText().length() == 0 || this.binding.etPass.getText().length() == 0)&& view==this.binding.btnLogin){
             // AlertDialog nanti
         }else if(this.binding.btnLogin==view){
             this.email = this.binding.etAcount.getText().toString();
@@ -89,7 +89,7 @@ public class loginFragment extends Fragment implements View.OnClickListener, log
     @Override
     public void validateAdmin(String token, String message) {
         Bundle result = new Bundle();
-        result.putInt("page",13);//pindah ke home
+        result.putInt("page",13);//pindah ke lihat list akun
         result.putString("token", token);
         result.putString("email", this.email);
         this.getParentFragmentManager().setFragmentResult("listUserPage", result);
