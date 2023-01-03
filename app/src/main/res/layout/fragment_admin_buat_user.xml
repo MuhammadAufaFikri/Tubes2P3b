@@ -5,10 +5,17 @@
     android:orientation="vertical"
     >
     <EditText
+        android:id="@+id/etnama"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="nama"
+        />
+    <EditText
         android:id="@+id/etAddEmail"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="email"
+        android:inputType="textEmailAddress"
         />
     <EditText
         android:id="@+id/etAddPassword"
@@ -21,10 +28,16 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Role:admin, lecturer, dan student"/>
+    <EditText
+        android:id="@+id/etInitialYear"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="initial year"
+        />
     <Button
         android:id="@+id/btnAdd"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="add"
+        android:text="add mahasiswa"
         />
 </LinearLayout>
