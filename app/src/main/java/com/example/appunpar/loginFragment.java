@@ -1,15 +1,15 @@
 package com.example.appunpar;
 
+import android.content.DialogInterface;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 
 import com.example.appunpar.databinding.FragmentLoginBinding;
-import com.google.gson.Gson;
 
 import org.json.JSONException;
 public class loginFragment extends Fragment implements View.OnClickListener, loginPresenterPost.LoginInterface{
@@ -53,7 +53,17 @@ public class loginFragment extends Fragment implements View.OnClickListener, log
     @Override
     public void onClick(View view) {
         if((this.binding.etAcount.getText().length() == 0 || this.binding.etPass.getText().length() == 0)&& view==this.binding.btnLogin){
-            // AlertDialog nanti
+            // AlertDialog
+            AlertDialog.Builder peringatanBelumIsi = new AlertDialog.Builder(getActivity());
+            peringatanBelumIsi.setTitle("Peringatan");
+            peringatanBelumIsi.setMessage("email atau password belum dimasukan");
+            peringatanBelumIsi.setNeutralButton("ok", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int id) {
+                }
+            });
+            AlertDialog dialog = peringatanBelumIsi.create();
+            dialog.show();
         }else if(this.binding.btnLogin==view){
             this.email = this.binding.etAcount.getText().toString();
             String password = this.binding.etPass.getText().toString();
@@ -97,6 +107,16 @@ public class loginFragment extends Fragment implements View.OnClickListener, log
     }
 
     public void failed(){
-        //alert
+        // AlertDialog
+        AlertDialog.Builder peringatanSalahIsian = new AlertDialog.Builder(getActivity());
+        peringatanSalahIsian.setTitle("Peringatan");
+        peringatanSalahIsian.setMessage("email atau password salah");
+        peringatanSalahIsian.setNeutralButton("ok", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int id) {
+            }
+        });
+        AlertDialog dialog = peringatanSalahIsian.create();
+        dialog.show();
     }
 }
