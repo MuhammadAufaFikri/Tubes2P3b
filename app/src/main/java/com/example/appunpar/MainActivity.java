@@ -26,7 +26,6 @@ public class MainActivity extends AppCompatActivity implements FragmentResultLis
     private hitoryFRSfragment hitoryFRS;
     private detailMatkulFragment detailMatkul;
     private adminBuatUserFragment adminBuatUser;
-    private adminListUserFragment adminListUser;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,8 +47,7 @@ public class MainActivity extends AppCompatActivity implements FragmentResultLis
         this.detailMatkul= detailMatkulFragment.newInstance("Fragment detail matkul");//12
 
         // khusus admin
-        this.adminListUser= adminListUserFragment.newInstance("Fragment list user");//13
-        this.adminBuatUser= adminBuatUserFragment.newInstance("Fragment buat user");//14
+        this.adminBuatUser= adminBuatUserFragment.newInstance("Fragment buat user");//13
 
 
         this.fragmentManager = this.getSupportFragmentManager();
@@ -113,9 +111,6 @@ public class MainActivity extends AppCompatActivity implements FragmentResultLis
                 ft.hide(this.detailMatkul);
             }
             //khusus admin
-            if(this.adminListUser.isAdded()){
-                ft.hide(this.adminListUser);
-            }
             if(this.adminBuatUser.isAdded()){
                 ft.hide(this.adminBuatUser);
             }
@@ -161,9 +156,6 @@ public class MainActivity extends AppCompatActivity implements FragmentResultLis
                 ft.hide(this.detailMatkul);
             }
             //khusus admin
-            if(this.adminListUser.isAdded()){
-                ft.hide(this.adminListUser);
-            }
             if(this.adminBuatUser.isAdded()){
                 ft.hide(this.adminBuatUser);
             }
@@ -209,9 +201,6 @@ public class MainActivity extends AppCompatActivity implements FragmentResultLis
                 ft.hide(this.detailMatkul);
             }
             //khusus admin
-            if(this.adminListUser.isAdded()){
-                ft.hide(this.adminListUser);
-            }
             if(this.adminBuatUser.isAdded()){
                 ft.hide(this.adminBuatUser);
             }
@@ -257,9 +246,6 @@ public class MainActivity extends AppCompatActivity implements FragmentResultLis
                 ft.hide(this.detailMatkul);
             }
             //khusus admin
-            if(this.adminListUser.isAdded()){
-                ft.hide(this.adminListUser);
-            }
             if(this.adminBuatUser.isAdded()){
                 ft.hide(this.adminBuatUser);
             }
@@ -305,9 +291,6 @@ public class MainActivity extends AppCompatActivity implements FragmentResultLis
                 ft.hide(this.detailMatkul);
             }
             //khusus admin
-            if(this.adminListUser.isAdded()){
-                ft.hide(this.adminListUser);
-            }
             if(this.adminBuatUser.isAdded()){
                 ft.hide(this.adminBuatUser);
             }
@@ -353,9 +336,6 @@ public class MainActivity extends AppCompatActivity implements FragmentResultLis
                 ft.hide(this.detailMatkul);
             }
             //khusus admin
-            if(this.adminListUser.isAdded()){
-                ft.hide(this.adminListUser);
-            }
             if(this.adminBuatUser.isAdded()){
                 ft.hide(this.adminBuatUser);
             }
@@ -401,9 +381,6 @@ public class MainActivity extends AppCompatActivity implements FragmentResultLis
                 ft.hide(this.detailMatkul);
             }
             //khusus admin
-            if(this.adminListUser.isAdded()){
-                ft.hide(this.adminListUser);
-            }
             if(this.adminBuatUser.isAdded()){
                 ft.hide(this.adminBuatUser);
             }
@@ -449,9 +426,6 @@ public class MainActivity extends AppCompatActivity implements FragmentResultLis
                 ft.hide(this.detailMatkul);
             }
             //khusus admin
-            if(this.adminListUser.isAdded()){
-                ft.hide(this.adminListUser);
-            }
             if(this.adminBuatUser.isAdded()){
                 ft.hide(this.adminBuatUser);
             }
@@ -497,9 +471,6 @@ public class MainActivity extends AppCompatActivity implements FragmentResultLis
                 ft.hide(this.detailMatkul);
             }
             //khusus admin
-            if(this.adminListUser.isAdded()){
-                ft.hide(this.adminListUser);
-            }
             if(this.adminBuatUser.isAdded()){
                 ft.hide(this.adminBuatUser);
             }
@@ -545,9 +516,6 @@ public class MainActivity extends AppCompatActivity implements FragmentResultLis
                 ft.hide(this.detailMatkul);
             }
             //khusus admin
-            if(this.adminListUser.isAdded()){
-                ft.hide(this.adminListUser);
-            }
             if(this.adminBuatUser.isAdded()){
                 ft.hide(this.adminBuatUser);
             }
@@ -593,9 +561,6 @@ public class MainActivity extends AppCompatActivity implements FragmentResultLis
                 ft.hide(this.detailMatkul);
             }
             //khusus admin
-            if(this.adminListUser.isAdded()){
-                ft.hide(this.adminListUser);
-            }
             if(this.adminBuatUser.isAdded()){
                 ft.hide(this.adminBuatUser);
             }
@@ -641,64 +606,12 @@ public class MainActivity extends AppCompatActivity implements FragmentResultLis
                 ft.hide(this.hitoryFRS);
             }
             //khusus admin
-            if(this.adminListUser.isAdded()){
-                ft.hide(this.adminListUser);
-            }
             if(this.adminBuatUser.isAdded()){
                 ft.hide(this.adminBuatUser);
             }
         }
         //(fragment admin)
-        //13.(admin) list user
         else if (page==13){
-            if(this.adminListUser.isAdded()){
-                ft.show(this.adminListUser);
-            } else {
-                ft.add(R.id.fragment_container, this.adminListUser).addToBackStack(null);
-            }
-            if(this.login.isAdded()){
-                ft.hide(this.login);
-            }
-            if(this.home.isAdded()){
-                ft.hide(this.home);
-            }
-            if(this.pengumuman.isAdded()){
-                ft.hide(this.pengumuman);
-            }
-            if(this.detailPengumuman.isAdded()){
-                ft.hide(this.detailPengumuman);
-            }
-            if(this.buatPengumuman.isAdded()){
-                ft.hide(this.buatPengumuman);
-            }
-            if(this.pertemuan.isAdded()){
-                ft.hide(this.pertemuan);
-            }
-            if(this.detailPertemuan.isAdded()){
-                ft.hide(this.detailPertemuan);
-            }
-            if(this.buatPertemuan.isAdded()){
-                ft.hide(this.buatPertemuan);
-            }
-            if(this.lihatJadwalDosen.isAdded()){
-                ft.hide(this.lihatJadwalDosen);
-            }
-            if(this.frs.isAdded()){
-                ft.hide(this.frs);
-            }
-            if(this.hitoryFRS.isAdded()){
-                ft.hide(this.hitoryFRS);
-            }
-            if(this.detailMatkul.isAdded()){
-                ft.hide(this.detailMatkul);
-            }
-            //khusus admin
-            if(this.adminBuatUser.isAdded()){
-                ft.hide(this.adminBuatUser);
-            }
-        }
-        //14.(admin) buat user
-        else if (page==14){
             if(this.adminBuatUser.isAdded()){
                 ft.show(this.adminBuatUser);
             } else {
@@ -741,9 +654,6 @@ public class MainActivity extends AppCompatActivity implements FragmentResultLis
                 ft.hide(this.detailMatkul);
             }
             //khusus admin
-            if(this.adminListUser.isAdded()){
-                ft.hide(this.adminListUser);
-            }
         }
         ft.commit();
     }
