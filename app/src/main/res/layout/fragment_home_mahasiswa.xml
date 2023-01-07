@@ -38,6 +38,7 @@
         android:gravity="center">
 
         <Button
+            android:id="@+id/keFramePengumuman"
             android:layout_width="150dp"
             android:layout_height="150dp"
             android:drawableTop="@drawable/icon_pengumuman"
@@ -47,6 +48,7 @@
         </Button>
 
         <Button
+            android:id="@+id/keFramePertemuan"
             android:layout_width="150dp"
             android:layout_height="150dp"
             android:drawableTop="@drawable/icon_pertemuan"
@@ -67,6 +69,7 @@
         android:gravity="center">
 
         <Button
+            android:id="@+id/keFrameFRS"
             android:layout_width="150dp"
             android:layout_height="150dp"
             android:drawableTop="@drawable/icon_frs"
@@ -76,6 +79,7 @@
         </Button>
 
         <Button
+            android:id="@+id/exit"
             android:layout_width="150dp"
             android:layout_height="150dp"
             android:drawableTop="@drawable/icon_logout"
