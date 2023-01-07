@@ -2,9 +2,14 @@ package com.example.appunpar;
 
 import android.content.DialogInterface;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.Spinner;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
@@ -12,9 +17,10 @@ import androidx.fragment.app.Fragment;
 import com.example.appunpar.databinding.FragmentLoginBinding;
 
 import org.json.JSONException;
-public class loginFragment extends Fragment implements View.OnClickListener, loginPresenterPost.LoginInterface{
+public class loginFragment extends Fragment implements View.OnClickListener, loginPresenterPost.LoginInterface, AdapterView.OnItemSelectedListener {
     protected FragmentLoginBinding binding;
     protected loginPresenterPost presenter;
+    private Spinner mSpinner;
     private String email;
     private cacheLoginDisplay pencatat;
 
@@ -27,12 +33,21 @@ public class loginFragment extends Fragment implements View.OnClickListener, log
     }
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
+        super.onCreate(savedInstanceState);
         this.binding = FragmentLoginBinding.inflate(inflater,container,false);
         this.binding.btnLogin.setOnClickListener(this);
-        this.binding.btnAcount.setOnClickListener(this);
         View view = this.binding.getRoot();
         this.presenter = new loginPresenterPost(this.getContext(),this);
         this.pencatat = new cacheLoginDisplay(this.getContext());
+        // In the onCreate method of your activity
+        mSpinner = this.binding.spinnerRole;
+        String[] Item = {"admin","lecturer","student"};
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(getActivity(),android.R.layout.simple_spinner_dropdown_item,Item);
+
+        //Memasukan Adapter pada Spinner
+
+        mSpinner.setAdapter(adapter);
+
         return view;
     }
 
@@ -67,17 +82,8 @@ public class loginFragment extends Fragment implements View.OnClickListener, log
         }else if(this.binding.btnLogin==view){
             this.email = this.binding.etAcount.getText().toString();
             String password = this.binding.etPass.getText().toString();
-            String role= "student";
-            try {
-                presenter.execute(email, password,role);
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }
-        }
-        else if(this.binding.btnAcount==view){
-            String email = "default.admin@domain.local";
-            String password = "mu8XyUogLi6Dk7";
-            String role = "admin";
+            String role= mSpinner.getSelectedItem().toString();
+
             try {
                 presenter.execute(email, password,role);
             } catch (JSONException e) {
@@ -99,10 +105,20 @@ public class loginFragment extends Fragment implements View.OnClickListener, log
     @Override
     public void validateAdmin(String token, String message) {
         Bundle result = new Bundle();
-        result.putInt("page",13);//pindah ke lihat list akun
+        result.putInt("page",13);//pindah ke home admin
         result.putString("token", token);
         result.putString("email", this.email);
-        this.getParentFragmentManager().setFragmentResult("listUserPage", result);
+        this.getParentFragmentManager().setFragmentResult("homeAdmin", result);
+        this.getParentFragmentManager().setFragmentResult("changePage",result);
+    }
+
+    @Override
+    public void validateLecture(String token, String message) {
+        Bundle result = new Bundle();
+        result.putInt("page",14);//pindah ke home dosen
+        result.putString("token", token);
+        result.putString("email", this.email);
+        this.getParentFragmentManager().setFragmentResult("homeLecture", result);
         this.getParentFragmentManager().setFragmentResult("changePage",result);
     }
 
@@ -118,5 +134,14 @@ public class loginFragment extends Fragment implements View.OnClickListener, log
         });
         AlertDialog dialog = peringatanSalahIsian.create();
         dialog.show();
+    }
+
+    @Override
+    public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> adapterView) {
+
     }
 }

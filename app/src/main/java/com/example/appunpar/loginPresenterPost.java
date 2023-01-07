@@ -63,15 +63,18 @@ public class loginPresenterPost {
         if(this.role=="student"){
             this.ui.validateStudent(token, res);
         }
-        else {
+        else if(this.role=="admin"){
             this.ui.validateAdmin(token, res);
         }
-
+        else if(this.role=="lecturer"){
+            this.ui.validateLecture(token, res);
+        }
     }
 
     interface LoginInterface {
         public void validateStudent(String token, String message);
         public void validateAdmin(String token, String message);
+        public void validateLecture(String token, String message);
         public void failed();
     }
 }

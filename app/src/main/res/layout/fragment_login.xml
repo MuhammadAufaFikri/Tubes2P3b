@@ -64,7 +64,12 @@
             >
 
         </EditText>
-
+        <Spinner
+            android:id="@+id/spinnerRole"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            />
         <Button
             android:id="@+id/btnLogin"
             android:layout_marginTop="20dp"
@@ -77,13 +82,5 @@
 
         </Button>
 
-        <!-- hilangkan nanti kalo gak dipake karena cuma untuk lihat list akun-->
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/btnAcount"
-            android:text="listAcount"
-            />
-        <!-- -->
     </LinearLayout>
 </RelativeLayout>
