@@ -26,6 +26,8 @@ public class MainActivity extends AppCompatActivity implements FragmentResultLis
     private hitoryFRSfragment hitoryFRS;
     private detailMatkulFragment detailMatkul;
     private adminBuatUserFragment adminBuatUser;
+    private homeAdminFragment homeAdmin;
+    private homeLectureFragment homeLecture;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,11 +50,15 @@ public class MainActivity extends AppCompatActivity implements FragmentResultLis
 
         // khusus admin
         this.adminBuatUser= adminBuatUserFragment.newInstance("Fragment buat user");//13
+        this.homeAdmin = homeAdminFragment.newInstance("Fragment home admin"); //14
+
+        //khusus lecture
+        this.homeLecture = homeLectureFragment.newInstance("Fragment home lecture"); //15
 
 
         this.fragmentManager = this.getSupportFragmentManager();
 
-        this.fragmentManager.beginTransaction().add(R.id.fragment_container, login).addToBackStack(null).commit();
+        this.fragmentManager.beginTransaction().add(R.id.fragment_container, homeLecture).addToBackStack(null).commit();
 
         this.fragmentManager.setFragmentResultListener("changePage", this, this);
 

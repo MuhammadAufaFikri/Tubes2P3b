@@ -1,43 +1,100 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    >
-    <EditText
-        android:id="@+id/etnama"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="nama"
-        />
-    <EditText
-        android:id="@+id/etAddEmail"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="email"
-        android:inputType="textEmailAddress"
-        />
-    <EditText
-        android:id="@+id/etAddPassword"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="password"
-        />
-    <EditText
-        android:id="@+id/etAddRole"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Role:admin, lecturer, dan student"/>
-    <EditText
-        android:id="@+id/etInitialYear"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="initial year"
-        />
-    <Button
-        android:id="@+id/btnAdd"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="add mahasiswa"
-        />
-</LinearLayout>
+    android:background="@color/green">
+
+    <LinearLayout
+        android:layout_width="300dp"
+        android:layout_height="600dp"
+        android:layout_centerInParent="true"
+        android:orientation="vertical">
+
+        <ImageView
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_gravity="center"
+            android:src="@drawable/logo_unpar">
+
+        </ImageView>
+
+
+        <TextView
+            android:padding="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Tambah Akun Mahasiswa"
+            android:textAlignment="center"
+            android:textColor="@android:color/white"
+            android:textSize="30sp">
+
+        </TextView>
+
+        <EditText
+            android:id="@+id/etAcount"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:hint="Nama"
+            >
+
+        </EditText>
+        <EditText
+            android:id="@+id/etEmail"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:hint="Email"
+            >
+
+        </EditText>
+        <EditText
+            android:id="@+id/etPass"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:hint="Password"
+            android:inputType="textPassword"
+            android:layout_gravity="center"
+            >
+
+        </EditText>
+
+        <EditText
+            android:id="@+id/etRole"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:hint="Role : admin, lecture, student"
+            >
+
+        </EditText>
+        <EditText
+            android:id="@+id/etYear"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:hint="Initial year"
+            >
+
+        </EditText>
+        <!--<Spinner
+            android:id="@+id/spinnerRole"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            />-->
+        <Button
+            android:id="@+id/btnLogin"
+            android:layout_marginTop="20dp"
+            android:layout_width="200sp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="Create"
+            android:backgroundTint="@color/yellow"
+            android:textColor="@color/black">
+
+        </Button>
+
+    </LinearLayout>
+</RelativeLayout>

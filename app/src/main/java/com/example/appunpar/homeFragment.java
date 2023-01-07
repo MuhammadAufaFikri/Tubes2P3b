@@ -21,6 +21,8 @@ public class homeFragment  extends Fragment implements View.OnClickListener{
         super.onCreate(savedInstanceState);
         this.binding = FragmentHomeMahasiswaBinding.inflate(inflater,container,false);
         this.binding.keFramePengumuman.setOnClickListener(this);
+        this.binding.keFrameFRS.setOnClickListener(this);
+        this.binding.keFramePertemuan.setOnClickListener(this);
         View view = this.binding.getRoot();
         return view;
     }
@@ -31,6 +33,24 @@ public class homeFragment  extends Fragment implements View.OnClickListener{
             Bundle result = new Bundle();
             result.putInt("page",3);//pindah ke pengumuman
             this.getParentFragmentManager().setFragmentResult("Fragment Pengumuman", result);
+            this.getParentFragmentManager().setFragmentResult("changePage",result);
+        }
+        else if(this.binding.keFrameFRS == view){
+            Bundle result = new Bundle();
+            result.putInt("page",10);//pindah ke FRS
+            this.getParentFragmentManager().setFragmentResult("Fragment FRS", result);
+            this.getParentFragmentManager().setFragmentResult("changePage",result);
+        }
+        else if(this.binding.keFramePertemuan == view){
+            Bundle result = new Bundle();
+            result.putInt("page",6);//pindah ke FRS
+            this.getParentFragmentManager().setFragmentResult("Fragment FRS", result);
+            this.getParentFragmentManager().setFragmentResult("changePage",result);
+        }
+        else if(this.binding.exit == view){
+            Bundle result = new Bundle();
+            result.putInt("page",1);//pindah ke FRS
+            this.getParentFragmentManager().setFragmentResult("Fragment FRS", result);
             this.getParentFragmentManager().setFragmentResult("changePage",result);
         }
     }

@@ -25,7 +25,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Pengumuman"
+                android:text="Pertemuan"
                 android:textColor="@color/white"
                 android:textSize="30sp"
                 android:textStyle="bold"
@@ -40,6 +40,7 @@
             android:layout_height="wrap_content">
 
             <Button
+                android:id="@+id/keLihatJadwalDosen"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Lihat Jadwal Dosen"
@@ -70,6 +71,7 @@
     </LinearLayout>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/keBuatPertemuan"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:clickable="true"

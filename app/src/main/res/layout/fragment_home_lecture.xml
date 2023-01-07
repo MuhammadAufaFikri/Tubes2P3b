@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:background="@color/green_menu"
     android:orientation="vertical">
-    
+
     <LinearLayout
         android:layout_marginTop="20dp"
         android:layout_marginLeft="20dp"
@@ -20,9 +20,9 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Portal Mahasiswa"
+            android:text="Portal Lecture"
             android:textColor="@color/white"
-            android:textSize="30sp"
+            android:textSize="40sp"
             android:textStyle="bold"
             android:paddingTop="10dp"
             android:paddingLeft="10dp">
@@ -64,29 +64,20 @@
 
         android:layout_below="@+id/header_ifportal2"
         android:layout_marginTop="20dp"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:gravity="center">
+        >
 
         <Button
-            android:id="@+id/keFrameFRS"
-            android:layout_width="150dp"
-            android:layout_height="150dp"
-            android:drawableTop="@drawable/icon_frs"
-            android:text="FRS"
-            android:textColor="@color/white"
-            android:backgroundTint="@color/green">
-        </Button>
-
-        <Button
-            android:id="@+id/exit"
+            android:layout_marginLeft="12dp"
+            android:id="@+id/exitAdmin"
             android:layout_width="150dp"
             android:layout_height="150dp"
             android:drawableTop="@drawable/icon_logout"
             android:text="Keluar"
             android:textColor="@color/white"
             android:backgroundTint="@color/green"
-            android:layout_marginLeft="55dp">
+            >
         </Button>
 
     </LinearLayout>

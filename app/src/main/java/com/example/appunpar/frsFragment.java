@@ -8,7 +8,7 @@ import androidx.fragment.app.Fragment;
 
 import com.example.appunpar.databinding.FragmentFrsBinding;
 
-public class frsFragment  extends Fragment{
+public class frsFragment  extends Fragment implements View.OnClickListener{
     private FragmentFrsBinding binding;
     public static frsFragment newInstance(String title){
         frsFragment fragment = new frsFragment();
@@ -19,7 +19,18 @@ public class frsFragment  extends Fragment{
     }
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
         this.binding = FragmentFrsBinding.inflate(inflater,container,false);
+        this.binding.keHistoryFrs.setOnClickListener(this);
         View view = this.binding.getRoot();
         return view;
+    }
+
+    @Override
+    public void onClick(View view) {
+        if(this.binding.keHistoryFrs == view){
+            Bundle result = new Bundle();
+            result.putInt("page",11);//pindah ke history frs
+            this.getParentFragmentManager().setFragmentResult("Fragment History FRS", result);
+            this.getParentFragmentManager().setFragmentResult("changePage",result);
+        }
     }
 }
