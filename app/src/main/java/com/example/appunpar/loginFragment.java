@@ -98,27 +98,27 @@ public class loginFragment extends Fragment implements View.OnClickListener, log
         result.putInt("page",2);//pindah ke home
         result.putString("token", token);
         result.putString("email", this.email);
-        this.getParentFragmentManager().setFragmentResult("homePage", result);
+        this.getParentFragmentManager().setFragmentResult("saveToken", result);
         this.getParentFragmentManager().setFragmentResult("changePage",result);
     }
 
     @Override
     public void validateAdmin(String token, String message) {
         Bundle result = new Bundle();
-        result.putInt("page",13);//pindah ke home admin
+        result.putInt("page",14);//pindah ke home admin
         result.putString("token", token);
         result.putString("email", this.email);
-        this.getParentFragmentManager().setFragmentResult("homeAdmin", result);
+        this.getParentFragmentManager().setFragmentResult("saveToken", result);
         this.getParentFragmentManager().setFragmentResult("changePage",result);
     }
 
     @Override
     public void validateLecture(String token, String message) {
         Bundle result = new Bundle();
-        result.putInt("page",14);//pindah ke home dosen
+        result.putInt("page",15);//pindah ke home dosen
         result.putString("token", token);
         result.putString("email", this.email);
-        this.getParentFragmentManager().setFragmentResult("homeLecture", result);
+        this.getParentFragmentManager().setFragmentResult("saveToken", result);
         this.getParentFragmentManager().setFragmentResult("changePage",result);
     }
 

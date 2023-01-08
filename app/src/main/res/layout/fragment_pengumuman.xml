@@ -5,34 +5,37 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/purple"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:padding="20dp"
+    >
+
     <LinearLayout
+        android:id="@+id/header_button_et"
         android:layout_width="360dp"
         android:layout_height="match_parent"
         android:layout_centerInParent="true"
         android:orientation="vertical">
 
         <LinearLayout
-            android:layout_marginTop="20dp"
+            android:id="@+id/header_pengumuman"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/header_pengumuman">
+            android:layout_marginTop="20dp">
 
             <ImageView
                 android:layout_width="70dp"
                 android:layout_height="70dp"
-                android:src="@drawable/logo_unpar">
-            </ImageView>
+                android:src="@drawable/logo_unpar"></ImageView>
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:paddingLeft="10dp"
                 android:text="Pengumuman"
                 android:textColor="@color/white"
                 android:textSize="30sp"
-                android:textStyle="bold"
-                android:paddingLeft="10dp"
-                android:layout_marginTop="15dp">
-            </TextView>
+                android:textStyle="bold"></TextView>
         </LinearLayout>
 
         <LinearLayout
@@ -42,63 +45,60 @@
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
                 android:background="@color/white"
-                android:hint="Insert Here"
-                android:layout_marginTop="10dp">
+                android:hint="Insert Here">
 
             </EditText>
         </LinearLayout>
 
 
         <LinearLayout
-            android:layout_marginTop="10dp"
+            android:id="@+id/layoutBtnTag"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="center">
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            android:orientation="horizontal">
 
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Pribadi"
-                android:backgroundTint="@color/bpRed">
+                android:backgroundTint="@color/bpRed"
+                android:text="Pribadi">
 
             </Button>
+
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Prodi"
-                android:backgroundTint="@color/orange"
                 android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp">
+                android:layout_marginRight="10dp"
+                android:backgroundTint="@color/orange"
+                android:text="Prodi">
 
             </Button>
+
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Early Warning"
-                android:backgroundTint="@color/bpBlue">
+                android:backgroundTint="@color/bpBlue"
+                android:text="Early Warning">
 
             </Button>
         </LinearLayout>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            >
+            <ListView
+                android:id="@+id/listPengumuman"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
 
-
+                />
+        </LinearLayout>
 
     </LinearLayout>
-
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/keBuatPengumuman"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:clickable="true"
-        app:srcCompat="@drawable/ic_add"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginStart="50dp"
-        android:layout_marginTop="50dp"
-        android:layout_marginEnd="50dp"
-        android:layout_marginBottom="50dp"
-        android:backgroundTint="@color/green_menu"
-        />
 
 </RelativeLayout>

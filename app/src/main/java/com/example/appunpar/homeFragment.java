@@ -4,12 +4,15 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentResultListener;
 
 import com.example.appunpar.databinding.FragmentHomeMahasiswaBinding;
 
 public class homeFragment  extends Fragment implements View.OnClickListener{
     private FragmentHomeMahasiswaBinding binding;
+    protected String token;
     public static homeFragment newInstance(String title){
         homeFragment fragment = new homeFragment();
         Bundle args = new Bundle();
@@ -23,10 +26,19 @@ public class homeFragment  extends Fragment implements View.OnClickListener{
         this.binding.keFramePengumuman.setOnClickListener(this);
         this.binding.keFrameFRS.setOnClickListener(this);
         this.binding.keFramePertemuan.setOnClickListener(this);
+        getParentFragmentManager().setFragmentResultListener("saveToken", this, new FragmentResultListener() {
+            @Override
+            public void onFragmentResult(@NonNull String requestKey, @NonNull Bundle result) {
+                token = result.getString("token");
+                getToken(token);
+            }
+        });
         View view = this.binding.getRoot();
         return view;
     }
-
+    private void getToken(String token) {
+        this.token=token;
+    }
     @Override
     public void onClick(View view) {
         if(this.binding.keFramePengumuman== view){

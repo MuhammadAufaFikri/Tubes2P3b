@@ -24,17 +24,31 @@
             </ImageView>
             <TextView
                 android:id="@+id/judulPengumuman"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textColor="@color/white"
+                android:text="judul"
                 android:textStyle="bold"
                 android:paddingLeft="10dp"
+                android:textSize="30dp"
                 android:layout_marginTop="15dp">
             </TextView>
         </LinearLayout>
-
-
-
+        <TextView
+            android:id="@+id/isiPengumuman"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            />
+        <TextView
+            android:id="@+id/tanggal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+        <TextView
+            android:id="@+id/author"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="author"
+            />
 
 
 
