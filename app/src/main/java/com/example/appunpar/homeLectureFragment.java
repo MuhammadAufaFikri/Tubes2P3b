@@ -46,18 +46,24 @@ public class homeLectureFragment extends Fragment implements View.OnClickListene
         if(this.binding.keFramePengumuman == view){
             Bundle result = new Bundle();
             result.putInt("page",5);//pindah ke buat pengumuman
+            result.putString("token", token);
+            this.getParentFragmentManager().setFragmentResult("saveToken", result);
             this.getParentFragmentManager().setFragmentResult("Fragment Buat Pengumuman", result);
             this.getParentFragmentManager().setFragmentResult("changePage",result);
         }
         else if(this.binding.keFramePertemuan == view){
             Bundle result = new Bundle();
             result.putInt("page",6);//pindah ke Tambah User
+            result.putString("token", token);
+            this.getParentFragmentManager().setFragmentResult("saveToken", result);
             this.getParentFragmentManager().setFragmentResult("Fragment Tambah User", result);
             this.getParentFragmentManager().setFragmentResult("changePage",result);
         }
         else if(this.binding.exitAdmin == view){
             Bundle result = new Bundle();
             result.putInt("page",1);//pindah ke Login
+            result.putString("token", token);
+            this.getParentFragmentManager().setFragmentResult("saveToken", result);
             this.getParentFragmentManager().setFragmentResult("Fragment Login", result);
             this.getParentFragmentManager().setFragmentResult("changePage",result);
         }

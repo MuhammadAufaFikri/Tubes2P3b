@@ -44,6 +44,7 @@ public class homeAdminFragment  extends Fragment implements View.OnClickListener
     public void onClick(View view) {
         if(this.binding.keFramePengumumanAdmin == view){
             Bundle result = new Bundle();
+
             result.putInt("page",5);//pindah ke buat pengumuman
             this.getParentFragmentManager().setFragmentResult("Fragment Buat Pengumuman", result);
             this.getParentFragmentManager().setFragmentResult("changePage",result);
