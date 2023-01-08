@@ -48,7 +48,7 @@ public class loginPresenterPost {
                 }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                ui.failed();
+                ui.failed(error);
                 Log.d("tokengagal", error.toString());
             }
         });
@@ -75,6 +75,6 @@ public class loginPresenterPost {
         public void validateStudent(String token, String message);
         public void validateAdmin(String token, String message);
         public void validateLecture(String token, String message);
-        public void failed();
+        public void failed(VolleyError error);
     }
 }

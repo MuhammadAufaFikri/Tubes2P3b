@@ -8,8 +8,10 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 
+import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.UnsupportedEncodingException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -52,7 +54,13 @@ public class callVolleyPresent {
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        callback.onErrorResponse(error);
+                        try {
+                            String responseBody = new String(error.networkResponse.data, "utf-8");
+                            JSONObject data = new JSONObject(responseBody);
+                            callback.onErrorResponse(data);
+                        } catch (JSONException | UnsupportedEncodingException e) {
+                            e.printStackTrace();
+                        }
                     }
                 }
         ) {
@@ -68,6 +76,6 @@ public class callVolleyPresent {
 
     public interface VolleyCallback {
         void onSuccessResponse(JSONObject result);
-        void onErrorResponse(VolleyError error);
+        void onErrorResponse(JSONObject error);
     }
 }

@@ -14,9 +14,14 @@ import android.widget.Toast;
 import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 
+import com.android.volley.VolleyError;
 import com.example.appunpar.databinding.FragmentLoginBinding;
 
 import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.UnsupportedEncodingException;
+
 public class loginFragment extends Fragment implements View.OnClickListener, loginPresenterPost.LoginInterface, AdapterView.OnItemSelectedListener {
     protected FragmentLoginBinding binding;
     protected loginPresenterPost presenter;
@@ -122,7 +127,8 @@ public class loginFragment extends Fragment implements View.OnClickListener, log
         this.getParentFragmentManager().setFragmentResult("changePage",result);
     }
 
-    public void failed(){
+    public void failed(VolleyError error){
+
         // AlertDialog
         AlertDialog.Builder peringatanSalahIsian = new AlertDialog.Builder(getActivity());
         peringatanSalahIsian.setTitle("Peringatan");
