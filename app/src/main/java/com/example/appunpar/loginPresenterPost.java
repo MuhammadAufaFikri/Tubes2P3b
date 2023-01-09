@@ -64,6 +64,7 @@ public class loginPresenterPost {
             this.ui.validateStudent(token, res);
         }
         else if(this.role=="admin"){
+            Log.d("admin","sa");
             this.ui.validateAdmin(token, res);
         }
         else if(this.role=="lecturer"){
