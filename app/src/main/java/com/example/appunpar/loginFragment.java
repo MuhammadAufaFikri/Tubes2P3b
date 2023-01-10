@@ -14,13 +14,17 @@ import android.widget.Toast;
 import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 
+import com.android.volley.Request;
 import com.android.volley.VolleyError;
 import com.example.appunpar.databinding.FragmentLoginBinding;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.UnsupportedEncodingException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class loginFragment extends Fragment implements View.OnClickListener, loginPresenterPost.LoginInterface, AdapterView.OnItemSelectedListener {
     protected FragmentLoginBinding binding;
@@ -126,6 +130,7 @@ public class loginFragment extends Fragment implements View.OnClickListener, log
         result.putInt("page",15);//pindah ke home dosen
         result.putString("token", token);
         result.putString("email", this.email);
+        simpanTokenData(token);
         this.getParentFragmentManager().setFragmentResult("saveToken", result);
         this.getParentFragmentManager().setFragmentResult("Fragment home lecture", result);
         this.getParentFragmentManager().setFragmentResult("changePage",result);
@@ -153,5 +158,28 @@ public class loginFragment extends Fragment implements View.OnClickListener, log
     @Override
     public void onNothingSelected(AdapterView<?> adapterView) {
 
+    }
+
+    public void simpanTokenData(String token) {
+        callVolleyPresent callvolleyPresent = callVolleyPresent.getInstance(getActivity().getApplicationContext());
+        callvolleyPresent.callVolley(Request.Method.GET, "https://ifportal.labftis.net/api/v1/users/self", null, token, new callVolleyPresent.VolleyCallback() {
+            @Override
+            public void onSuccessResponse(JSONObject result) {
+                try {
+                    JSONObject json = new JSONObject(result.toString()); // jsonString adalah string yang berisi data JSON
+                    String id = json.getString("id");
+                    String name = json.getString("name");
+                    String email = json.getString("email");
+                    saveToken saveToken = new saveToken(id, name, email,token);
+                } catch (JSONException e) {
+                    // Tambahkan kode untuk menangani kesalahan
+                }
+            }
+
+            @Override
+            public void onErrorResponse(JSONObject error) {
+                // Do something with the error
+            }
+        });
     }
 }

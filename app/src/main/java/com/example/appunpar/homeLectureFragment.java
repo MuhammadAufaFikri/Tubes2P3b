@@ -45,7 +45,7 @@ public class homeLectureFragment extends Fragment implements View.OnClickListene
     public void onClick(View view) {
         if(this.binding.keFramePengumuman == view){
             Bundle result = new Bundle();
-            result.putInt("page",5);//pindah ke buat pengumuman
+            result.putInt("page",3);//pindah ke lihat pengumuman
             result.putString("token", token);
             this.getParentFragmentManager().setFragmentResult("saveToken", result);
             this.getParentFragmentManager().setFragmentResult("Fragment Buat Pengumuman", result);
@@ -53,7 +53,7 @@ public class homeLectureFragment extends Fragment implements View.OnClickListene
         }
         else if(this.binding.keFramePertemuan == view){
             Bundle result = new Bundle();
-            result.putInt("page",6);//pindah ke Tambah User
+            result.putInt("page",6);//pindah ke lihat pertemuan
             result.putString("token", token);
             this.getParentFragmentManager().setFragmentResult("saveToken", result);
             this.getParentFragmentManager().setFragmentResult("Fragment Tambah User", result);

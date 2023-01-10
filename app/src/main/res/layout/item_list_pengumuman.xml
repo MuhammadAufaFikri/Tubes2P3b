@@ -21,20 +21,25 @@
         android:background="@drawable/box_background"
         android:orientation="vertical">
         <TextView
+            android:id="@+id/judulPengumuman"
             android:layout_marginLeft="10dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Pengumuman FRS"
+            android:text="Judul Pengumuman"
             android:textStyle="bold"
-            android:textSize="25dp">
+            android:textSize="25dp"
+            android:textColor="@color/black"
+            >
         </TextView>
 
         <TextView
+            android:id="@+id/tag"
             android:layout_marginLeft="10dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="semua"
-            android:textSize="20dp">
+            android:text="tag"
+            android:textSize="20dp"
+            android:textColor="@color/black">
         </TextView>
     </LinearLayout>
 
