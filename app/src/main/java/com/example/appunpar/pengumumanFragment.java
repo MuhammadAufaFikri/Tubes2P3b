@@ -19,7 +19,9 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class pengumumanFragment  extends Fragment{
     private FragmentPengumumanBinding binding;
@@ -52,42 +54,53 @@ public class pengumumanFragment  extends Fragment{
 
     public void loadDataAwal() {
         callVolleyPresent callvolleyPresent = callVolleyPresent.getInstance(getActivity().getApplicationContext());
-        callvolleyPresent.callVolley(Request.Method.GET, "https://ifportal.labftis.net/api/v1/announcements", null, this.token, new callVolleyPresent.VolleyCallback() {
-            @Override
-            public void onSuccessResponse(JSONObject result) {
-                try {
-                    JSONObject json = new JSONObject(result.toString()); // result adalah string yang berisi data JSON
-                    JSONArray jsonArray = json.getJSONArray("data");
-                    for (int i = 0; i < jsonArray.length(); i++) {
-                        JSONObject jsonObject = jsonArray.getJSONObject(i);
-                        String id = jsonObject.getString("id");
-                        Log.d("id",id);
-                        String title = jsonObject.getString("title");
-                        JSONArray tagsJsonArray = jsonObject.getJSONArray("tags");
-                        List<String> tags = new ArrayList<>();
-                        for (int j = 0; j < tagsJsonArray.length(); j++) {
-                            JSONObject tagsJsonObject = tagsJsonArray.getJSONObject(j);
-                            String tag = tagsJsonObject.getString("tag");
-                            tags.add(tag);
+        int offset = 0;
+        int limit = 10;
+        final boolean[] isDataAvailable = {true};
+        while(isDataAvailable[0]) {
+            // Membuat parameter untuk request API
+            Map<String, String> params = new HashMap<>();
+            params.put("offset", String.valueOf(offset));
+            params.put("limit", String.valueOf(limit));
+
+            // Membuat request ke API
+            callvolleyPresent.callVolley(Request.Method.GET, "https://ifportal.labftis.net/api/v1/announcements", params, this.token, new callVolleyPresent.VolleyCallback() {
+                @Override
+                public void onSuccessResponse(JSONObject result) {
+                    try {
+                        JSONObject json = new JSONObject(result.toString());
+                        JSONArray jsonArray = json.getJSONArray("data");
+                        if (jsonArray.length() == 0) {
+                            isDataAvailable = false;
+                        } else {
+                            for (int i = 0; i < jsonArray.length(); i++) {
+                                JSONObject jsonObject = jsonArray.getJSONObject(i);
+                                String id = jsonObject.getString("id");
+                                String title = jsonObject.getString("title");
+                                JSONArray tagsJsonArray = jsonObject.getJSONArray("tags");
+                                List<String> tags = new ArrayList<>();
+                                for (int j = 0; j < tagsJsonArray.length(); j++) {
+                                    JSONObject tagsJsonObject = tagsJsonArray.getJSONObject(j);
+                                    String tag = tagsJsonObject.getString("tag");
+                                    tags.add(tag);
+                                }
+                                modelPengumuman model = new modelPengumuman(id, title, tags);
+                                pengumumanList.add(model);
+                            }
+                            // Tambahkan data ke announcements dan panggil adapter.notifyDataSetChanged()
+                            adapter.notifyDataSetChanged();
                         }
-                        modelPengumuman model = new modelPengumuman(id, title, tags);
-                        pengumumanList.add(model);
+                    } catch (JSONException e) {
+                        // Tambahkan kode untuk menangani kesalahan
                     }
-                } catch (JSONException e) {
-                    // Tambahkan kode untuk menangani kesalahan
                 }
 
-// Tambahkan data ke announcements dan panggil adapter.notifyDataSetChanged()
-                Log.d("diload",pengumumanList.toString());
-                adapter = new adapterListPengumuman(getActivity(), pengumumanList);
-                listView = binding.listPengumuman;
-                listView.setAdapter(adapter);
-            }
-
-            @Override
-            public void onErrorResponse(JSONObject error) {
-                // Do something with the error
-            }
-        });
+                @Override
+                public void onErrorResponse(JSONObject error) {
+                    // Do something with the error
+                }
+            });
+            offset += limit;
+        }
     }
 }

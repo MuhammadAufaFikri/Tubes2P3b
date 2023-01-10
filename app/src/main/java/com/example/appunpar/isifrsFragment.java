@@ -4,6 +4,8 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.Spinner;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -17,6 +19,7 @@ import org.json.JSONObject;
 public class isifrsFragment  extends Fragment{
     private FragmentIsiFrsBinding binding;
     protected String token;
+    private Spinner mSpinner;
     public static isifrsFragment newInstance(String title){
         isifrsFragment fragment = new isifrsFragment();
         Bundle args = new Bundle();
@@ -28,18 +31,14 @@ public class isifrsFragment  extends Fragment{
         super.onCreate(savedInstanceState);
         this.binding = FragmentIsiFrsBinding.inflate(inflater,container,false);
         View view = this.binding.getRoot();
-        getParentFragmentManager().setFragmentResultListener("saveToken", this, new FragmentResultListener() {
-            @Override
-            public void onFragmentResult(@NonNull String requestKey, @NonNull Bundle result) {
-                token = result.getString("token");
-                getToken(token);
-            }
-        });
+        mSpinner = this.binding.spinnersemester;
+        String[] Item = {"semester 1","semester 2","semester 3","semester 4","semester 5","semester 6","semester 7","semester 8"};
+        ArrayAdapter<String> adapterSpinner = new ArrayAdapter<>(getActivity(),android.R.layout.simple_spinner_dropdown_item,Item);
+        //Memasukan Adapter pada Spinner
+        mSpinner.setAdapter(adapterSpinner);
         return view;
     }
-    private void getToken(String token) {
-        this.token=token;
-    }
+
     public void loadtData() {
         callVolleyPresent.callVolley(Request.Method.GET, "https://ifportal.labftis.net/api/v1/courses", null, "YOUR_TOKEN", new callVolleyPresent.VolleyCallback() {
             @Override

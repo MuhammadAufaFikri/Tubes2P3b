@@ -6,6 +6,7 @@
     android:orientation="vertical"
     android:background="@color/white">
     <LinearLayout
+
         android:layout_width="360dp"
         android:layout_height="match_parent"
         android:layout_centerInParent="true"
@@ -61,6 +62,7 @@
                 android:layout_width="150dp"
                 android:layout_height="wrap_content"
                 android:text="FRS"
+
                 android:backgroundTint="@color/green_2">
 
             </Button>
@@ -108,22 +110,29 @@
         </LinearLayout>
 
         <LinearLayout
+            android:padding="49dp"
+            android:background="@drawable/box_background"
+            android:outlineSpotShadowColor="@color/black"
+            android:layout_gravity="center"
             android:layout_marginTop="10dp"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:orientation="vertical"
             android:gravity="center">
 
             <TextView
+                android:id="@+id/namaOrang"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="User 3232131"
                 android:textSize="20dp"
                 android:textStyle="bold"
+                android:textColor="@color/black"
                 >
 
             </TextView>
             <Button
+                android:id="@+id/isiFrs"
                 android:layout_marginTop="40dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -139,7 +148,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Silakan logout jika bukan anda"
-                android:textSize="15dp">
+                android:textSize="15dp"
+                android:textColor="@color/black">
 
             </TextView>
 
