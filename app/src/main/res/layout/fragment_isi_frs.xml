@@ -29,7 +29,7 @@
                 android:paddingLeft="10dp"
                 android:text="Isi FRS"
                 android:textSize="40sp"
-                android:textStyle="bold"></TextView>
+                android:textStyle="bold"/>
         </LinearLayout>
 
         <LinearLayout
@@ -39,14 +39,15 @@
             android:orientation="vertical">
 
             <TextView
+                android:layout_gravity="center"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@color/orange"
                 android:padding="5dp"
-                android:text="Anda memiliki kuota FRS sebanyak 18 SKS"
+                android:text="Anda memiliki kuota FRS sebanyak "
                 android:textColor="@color/white"
                 android:textSize="18dp"
-                android:textStyle="bold"></TextView>
+                android:textStyle="bold"/>
         </LinearLayout>
 
         <LinearLayout
@@ -83,6 +84,7 @@
                 android:textStyle="bold" />
 
             <AutoCompleteTextView
+                android:id="@+id/actvMatkul"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Inside Here"
