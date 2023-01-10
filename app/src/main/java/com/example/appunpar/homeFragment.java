@@ -44,33 +44,26 @@ public class homeFragment  extends Fragment implements View.OnClickListener{
         if(this.binding.keFramePengumuman== view){
             Bundle result = new Bundle();
             result.putInt("page",3);//pindah ke pengumuman
-            result.putString("token", token);
-            this.getParentFragmentManager().setFragmentResult("saveToken", result);
             this.getParentFragmentManager().setFragmentResult("Fragment Pengumuman", result);
             this.getParentFragmentManager().setFragmentResult("changePage",result);
         }
         else if(this.binding.keFrameFRS == view){
             Bundle result = new Bundle();
             result.putInt("page",10);//pindah ke FRS
-            result.putString("token", token);
-            this.getParentFragmentManager().setFragmentResult("saveToken", result);
             this.getParentFragmentManager().setFragmentResult("Fragment FRS", result);
             this.getParentFragmentManager().setFragmentResult("changePage",result);
         }
         else if(this.binding.keFramePertemuan == view){
             Bundle result = new Bundle();
-            result.putInt("page",6);//pindah ke FRS
-            result.putString("token", token);
-            this.getParentFragmentManager().setFragmentResult("saveToken", result);
-            this.getParentFragmentManager().setFragmentResult("Fragment FRS", result);
+            result.putInt("page",6);//pindah ke pertemuan
+            this.getParentFragmentManager().setFragmentResult("Fragment pertemuan", result);
             this.getParentFragmentManager().setFragmentResult("changePage",result);
         }
         else if(this.binding.exit == view){
             Bundle result = new Bundle();
-            result.putInt("page",1);//pindah ke FRS
-            result.putString("token", token);
-            this.getParentFragmentManager().setFragmentResult("saveToken", result);
-            this.getParentFragmentManager().setFragmentResult("Fragment FRS", result);
+            result.putInt("page",1);//keluar
+            saveToken saveToken = new saveToken(null,null,null,null);
+            this.getParentFragmentManager().setFragmentResult("Fragment Login", result);
             this.getParentFragmentManager().setFragmentResult("changePage",result);
         }
     }

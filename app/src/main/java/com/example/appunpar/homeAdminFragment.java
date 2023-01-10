@@ -59,6 +59,7 @@ public class homeAdminFragment  extends Fragment implements View.OnClickListener
         else if(this.binding.exitAdmin == view){
             Bundle result = new Bundle();
             result.putInt("page",1);//pindah ke Login
+            saveToken saveToken = new saveToken(null,null,null,null);
             this.getParentFragmentManager().setFragmentResult("Fragment Login", result);
             this.getParentFragmentManager().setFragmentResult("changePage",result);
         }
