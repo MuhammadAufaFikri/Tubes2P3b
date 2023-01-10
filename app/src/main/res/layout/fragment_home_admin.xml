@@ -62,15 +62,26 @@
     </LinearLayout>
 
     <LinearLayout
-
         android:layout_below="@+id/header_ifportal2"
         android:layout_marginTop="20dp"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:gravity="center"
+
         >
 
         <Button
-            android:layout_marginLeft="12dp"
+            android:id="@+id/keBuatPertemuan"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:backgroundTint="@color/green"
+            android:drawableTop="@drawable/icon_pertemuan"
+            android:text="Pertemuan"
+            android:textColor="@color/white">
+
+        </Button>
+
+        <Button
             android:id="@+id/exitAdmin"
             android:layout_width="150dp"
             android:layout_height="150dp"
@@ -78,7 +89,7 @@
             android:text="Keluar"
             android:textColor="@color/white"
             android:backgroundTint="@color/green"
-            >
+            android:layout_marginLeft="55dp">
         </Button>
 
     </LinearLayout>

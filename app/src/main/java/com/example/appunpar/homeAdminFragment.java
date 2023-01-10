@@ -63,6 +63,12 @@ public class homeAdminFragment  extends Fragment implements View.OnClickListener
             this.getParentFragmentManager().setFragmentResult("Fragment Login", result);
             this.getParentFragmentManager().setFragmentResult("changePage",result);
         }
+        else if(this.binding.keBuatPertemuan == view){
+            Bundle result = new Bundle();
+            result.putInt("page",8);//pindah ke buat pertemuan
+            this.getParentFragmentManager().setFragmentResult("Fragment Buat Pertemuan", result);
+            this.getParentFragmentManager().setFragmentResult("changePage",result);
+        }
 
     }
 }

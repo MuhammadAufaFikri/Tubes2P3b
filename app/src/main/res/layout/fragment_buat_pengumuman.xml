@@ -51,7 +51,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@color/white"
-                android:hint="Insert Here">
+                android:hint="Insert Here"
+                android:textColor="@color/black">
             </EditText>
 
         </LinearLayout>
@@ -74,7 +75,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@color/white"
-                android:hint="Insert Here">
+                android:hint="Insert Here"
+                android:textColor="@color/black">
             </EditText>
 
         </LinearLayout>
@@ -97,7 +99,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@color/white"
-                android:hint="Insert Here">
+                android:hint="Insert Here"
+                android:textColor="@color/black">
             </EditText>
 
         </LinearLayout>
@@ -116,14 +119,17 @@
             </TextView>
 
             <EditText
+                android:gravity="top|start"
                 android:layout_width="match_parent"
                 android:layout_height="250dp"
+                android:textColor="@color/black"
                 android:background="@color/white">
             </EditText>
 
         </LinearLayout>
 
         <Button
+
             android:layout_marginTop="20dp"
             android:layout_width="200sp"
             android:layout_height="wrap_content"

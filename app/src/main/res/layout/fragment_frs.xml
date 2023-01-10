@@ -111,13 +111,36 @@
             android:layout_marginTop="10dp"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="horizontal">
+            android:orientation="vertical"
+            android:gravity="center">
+
             <TextView
-                android:layout_width="350dp"
-                android:layout_height="300dp"
-                android:background="@drawable/shadow_box"
-                android:elevation="5dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="User 3232131"
+                android:textSize="20dp"
+                android:textStyle="bold"
                 >
+
+            </TextView>
+            <Button
+                android:layout_marginTop="40dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Isi FRS"
+                android:backgroundTint="@color/yellow"
+                android:textColor="@color/black"
+                >
+
+            </Button>
+
+            <TextView
+                android:layout_marginTop="40dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Silakan logout jika bukan anda"
+                android:textSize="15dp">
+
             </TextView>
 
 
