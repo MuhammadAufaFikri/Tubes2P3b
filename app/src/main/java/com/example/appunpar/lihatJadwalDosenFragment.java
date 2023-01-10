@@ -1,8 +1,19 @@
 package com.example.appunpar;
+import android.app.AlertDialog;
+import android.app.DatePickerDialog;
+import android.app.Dialog;
+import android.app.TimePickerDialog;
+import android.content.Context;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.DatePicker;
+import android.widget.Spinner;
+import android.widget.TextView;
+import android.widget.TimePicker;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -13,9 +24,15 @@ import com.example.appunpar.databinding.FragmentLihatJadwalDosenBinding;
 
 import org.json.JSONObject;
 
+import java.util.Calendar;
+
 public class lihatJadwalDosenFragment extends Fragment{
     private FragmentLihatJadwalDosenBinding binding;
     protected String token;
+    private TextView jamStart;
+    private TextView jamEnd;
+    private Spinner mSpinner;
+
     public static lihatJadwalDosenFragment newInstance(String title){
         lihatJadwalDosenFragment fragment = new lihatJadwalDosenFragment();
         Bundle args = new Bundle();
@@ -26,6 +43,36 @@ public class lihatJadwalDosenFragment extends Fragment{
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         this.binding = FragmentLihatJadwalDosenBinding.inflate(inflater,container,false);
+
+
+        //spinner
+        mSpinner = this.binding.spinnerRole2;
+        String[] Item = {"admin","lecturer","student"};
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(getActivity(),android.R.layout.simple_spinner_dropdown_item,Item);
+
+        //Memasukan Adapter pada Spinner
+
+        mSpinner.setAdapter(adapter);
+
+        //datepicker
+
+        jamStart = this.binding.jamStart;
+        jamEnd = this.binding.jamEnd;
+
+
+        this.binding.jamStart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                getDateTime1();
+            }
+        });
+        this.binding.jamEnd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                getDateTime2();
+            }
+        });
+
         View view = this.binding.getRoot();
         getParentFragmentManager().setFragmentResultListener("saveToken", this, new FragmentResultListener() {
             @Override
@@ -36,6 +83,49 @@ public class lihatJadwalDosenFragment extends Fragment{
         });
         return view;
     }
+
+    //timepicker
+    void getDateTime1(){
+        final Calendar c = Calendar.getInstance();
+
+        int year = c.get(Calendar.YEAR);
+        int month = c.get(Calendar.MONTH);
+        int day = c.get(Calendar.DAY_OF_MONTH);
+        DatePickerDialog datePickerDialog = new DatePickerDialog(getContext(),
+                new DatePickerDialog.OnDateSetListener() {
+                    @Override
+                    public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
+                        // on below line we are setting date to our text view.
+                        jamStart.setText(year + "-" + (monthOfYear + 1) + "-" + dayOfMonth );
+
+                    }
+                },
+                year, month, day);
+        datePickerDialog.show();
+    }
+    void getDateTime2(){
+        final Calendar c = Calendar.getInstance();
+
+        int year = c.get(Calendar.YEAR);
+        int month = c.get(Calendar.MONTH);
+        int day = c.get(Calendar.DAY_OF_MONTH);
+        DatePickerDialog datePickerDialog = new DatePickerDialog(getContext(),
+                new DatePickerDialog.OnDateSetListener() {
+                    @Override
+                    public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
+                        // on below line we are setting date to our text view.
+                        jamEnd.setText(year + "-" + (monthOfYear + 1) + "-" + dayOfMonth );
+
+                    }
+                },
+                year, month, day);
+        datePickerDialog.show();
+    }
+
+
+
+
+    
     private void getToken(String token) {
         this.token=token;
     }

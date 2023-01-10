@@ -28,6 +28,7 @@ public class pertemuanFragment extends Fragment{
         super.onCreate(savedInstanceState);
         this.binding = FragmentPertemuanBinding.inflate(inflater,container,false);
         this.binding.keBuatPertemuan.setOnClickListener(this::onClick);
+        this.binding.keLihatJadwalDosen.setOnClickListener(this::onClick);
         View view = this.binding.getRoot();
         getParentFragmentManager().setFragmentResultListener("saveToken", this, new FragmentResultListener() {
             @Override

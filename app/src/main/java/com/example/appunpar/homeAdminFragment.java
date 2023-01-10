@@ -28,6 +28,7 @@ public class homeAdminFragment  extends Fragment implements View.OnClickListener
         this.binding.keFramePengumumanAdmin.setOnClickListener(this);
         this.binding.keTambahUser.setOnClickListener(this);
         this.binding.exitAdmin.setOnClickListener(this);
+        this.binding.keBuatPertemuan.setOnClickListener(this);
         View view = this.binding.getRoot();
         getParentFragmentManager().setFragmentResultListener("saveToken", this, new FragmentResultListener() {
             @Override
@@ -65,7 +66,7 @@ public class homeAdminFragment  extends Fragment implements View.OnClickListener
         }
         else if(this.binding.keBuatPertemuan == view){
             Bundle result = new Bundle();
-            result.putInt("page",8);//pindah ke buat pertemuan
+            result.putInt("page",6);//pindah ke pertemuan
             this.getParentFragmentManager().setFragmentResult("Fragment Buat Pertemuan", result);
             this.getParentFragmentManager().setFragmentResult("changePage",result);
         }
