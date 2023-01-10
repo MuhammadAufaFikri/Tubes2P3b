@@ -54,20 +54,28 @@
                     android:drawableEnd="@drawable/icon_tanggal"
                     android:padding="5dp"
                     android:background="@color/white"
-                    android:id="@+id/jamStart"
+                    android:id="@+id/tglStart"
                     android:layout_width="150dp"
                     android:layout_height="wrap_content"
                     android:text="Tanggal mulai"
                     android:textSize="15dp"
                     android:textColor="@color/black">
                 </TextView>
-
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="-"
+                    android:textColor="@color/white"
+                    android:textSize="30dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp">
+                </TextView>
                 <TextView
                     android:layout_margin="10dp"
                     android:drawableEnd="@drawable/icon_tanggal"
                     android:padding="5dp"
                     android:background="@color/white"
-                    android:id="@+id/jamEnd"
+                    android:id="@+id/tglEnd"
                     android:layout_width="150dp"
                     android:layout_height="wrap_content"
                     android:text="Tanggal selesai"

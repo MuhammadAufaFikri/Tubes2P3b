@@ -29,8 +29,8 @@ import java.util.Calendar;
 public class lihatJadwalDosenFragment extends Fragment{
     private FragmentLihatJadwalDosenBinding binding;
     protected String token;
-    private TextView jamStart;
-    private TextView jamEnd;
+    private TextView tglStart;
+    private TextView tglEnd;
     private Spinner mSpinner;
 
     public static lihatJadwalDosenFragment newInstance(String title){
@@ -56,17 +56,17 @@ public class lihatJadwalDosenFragment extends Fragment{
 
         //datepicker
 
-        jamStart = this.binding.jamStart;
-        jamEnd = this.binding.jamEnd;
+        tglStart = this.binding.tglStart;
+        tglEnd = this.binding.tglEnd;
 
 
-        this.binding.jamStart.setOnClickListener(new View.OnClickListener() {
+        this.binding.tglStart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 getDateTime1();
             }
         });
-        this.binding.jamEnd.setOnClickListener(new View.OnClickListener() {
+        this.binding.tglEnd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 getDateTime2();
@@ -96,7 +96,7 @@ public class lihatJadwalDosenFragment extends Fragment{
                     @Override
                     public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
                         // on below line we are setting date to our text view.
-                        jamStart.setText(year + "-" + (monthOfYear + 1) + "-" + dayOfMonth );
+                        tglStart.setText(year + "-" + (monthOfYear + 1) + "-" + dayOfMonth );
 
                     }
                 },
@@ -114,7 +114,7 @@ public class lihatJadwalDosenFragment extends Fragment{
                     @Override
                     public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
                         // on below line we are setting date to our text view.
-                        jamEnd.setText(year + "-" + (monthOfYear + 1) + "-" + dayOfMonth );
+                        tglEnd.setText(year + "-" + (monthOfYear + 1) + "-" + dayOfMonth );
 
                     }
                 },
