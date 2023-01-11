@@ -3,12 +3,14 @@ import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.DatePicker;
 import android.widget.TextView;
 import android.widget.TimePicker;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -16,7 +18,9 @@ import androidx.fragment.app.FragmentResultListener;
 
 import com.android.volley.Request;
 import com.example.appunpar.databinding.FragmentBuatPertemuanBinding;
+import com.google.gson.Gson;
 
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.Calendar;
@@ -28,12 +32,14 @@ public class buatPertemuanFragment  extends Fragment implements View.OnClickList
 
     private TextView timeStart;
     private TextView timeEnd;
+    private Gson gson;
 
     public static buatPertemuanFragment newInstance(String title){
         buatPertemuanFragment fragment = new buatPertemuanFragment();
         Bundle args = new Bundle();
         args.putString("title", title);
         fragment.setArguments(args);
+
         return fragment;
     }
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
@@ -67,13 +73,7 @@ public class buatPertemuanFragment  extends Fragment implements View.OnClickList
         });
         this.binding.btnSimpan.setOnClickListener(this);
         View view = this.binding.getRoot();
-        getParentFragmentManager().setFragmentResultListener("saveToken", this, new FragmentResultListener() {
-            @Override
-            public void onFragmentResult(@NonNull String requestKey, @NonNull Bundle result) {
-                token = result.getString("token");
-                getToken(token);
-            }
-        });
+        this.token=saveToken.getToken();
         return view;
     }
 
@@ -89,8 +89,7 @@ public class buatPertemuanFragment  extends Fragment implements View.OnClickList
                     @Override
                     public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
                         // on below line we are setting date to our text view.
-                        date.setText(year + "-" + (monthOfYear + 1) + "-" + dayOfMonth );
-
+                        date.setText(year + "-" + String.format("%02d", monthOfYear + 1) + "-" + String.format("%02d",dayOfMonth ));
                     }
                 },
                 year, month, day);
@@ -143,14 +142,13 @@ public class buatPertemuanFragment  extends Fragment implements View.OnClickList
 
 
 
-    private void getToken(String token) {
-        this.token=token;
-    }
     public void inputData(JSONObject toJson) {
         callVolleyPresent.callVolley(Request.Method.POST, "https://ifportal.labftis.net/api/v1/appointments", toJson, this.token, new callVolleyPresent.VolleyCallback() {
             @Override
             public void onSuccessResponse(JSONObject result) {
-
+                Toast toast = Toast.makeText(getActivity(), "pertemuan telah dibuat", Toast.LENGTH_SHORT);
+                toast.setGravity(Gravity.BOTTOM, 0, 0);
+                toast.show();
             }
 
             @Override
@@ -164,6 +162,20 @@ public class buatPertemuanFragment  extends Fragment implements View.OnClickList
     public void onClick(View v) {
         if(v==this.binding.btnSimpan){
             Log.d("jam",this.binding.jamStart.getText().toString());
+            String title= this.binding.etTitle.getText().toString();
+            String description=this.binding.etdetail.getText().toString();
+            String start_datetime=this.binding.tanggalPertemuan.getText().toString()+" "+this.binding.jamStart.getText().toString()+"+0700";
+            String end_datetime=this.binding.tanggalPertemuan.getText().toString()+" "+this.binding.jamEnd.getText().toString()+"+0700";
+            this.gson = new Gson();
+            Log.d("tgl",start_datetime);
+            appointmentInput input = new appointmentInput(title, description,start_datetime,end_datetime);
+            try {
+                JSONObject objJSON = new JSONObject(gson.toJson(input));
+                Log.d("tes",objJSON.toString());
+                inputData(objJSON);
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
         }
     }
 }
