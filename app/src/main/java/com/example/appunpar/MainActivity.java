@@ -28,6 +28,7 @@ public class MainActivity extends AppCompatActivity implements FragmentResultLis
     private adminBuatUserFragment adminBuatUser;
     private homeAdminFragment homeAdmin;
     private homeLectureFragment homeLecture;
+    private isifrsFragment isifrs;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,6 +48,7 @@ public class MainActivity extends AppCompatActivity implements FragmentResultLis
         this.frs= frsFragment.newInstance("Fragment frs");//10
         this.hitoryFRS= hitoryFRSfragment.newInstance("Fragment history frs");//11
         this.detailMatkul= detailMatkulFragment.newInstance("Fragment detail matkul");//12
+        this.isifrs= isifrsFragment.newInstance("Fragment isi Frs");//16
 
         // khusus admin
         this.adminBuatUser= adminBuatUserFragment.newInstance("Fragment buat user");//13
@@ -54,7 +56,6 @@ public class MainActivity extends AppCompatActivity implements FragmentResultLis
 
         //khusus lecture
         this.homeLecture = homeLectureFragment.newInstance("Fragment home lecture"); //15
-
 
         this.fragmentManager = this.getSupportFragmentManager();
 
@@ -81,7 +82,7 @@ public class MainActivity extends AppCompatActivity implements FragmentResultLis
             if(this.login.isAdded()){
                 ft.show(this.login);
             } else {
-                ft.add(R.id.fragment_container, this.login);
+                ft.add(R.id.fragment_container, this.login).addToBackStack(null);;
             }
             if(this.home.isAdded()){
                 ft.hide(this.home);
@@ -126,8 +127,11 @@ public class MainActivity extends AppCompatActivity implements FragmentResultLis
             if(this.homeLecture.isAdded()){
                 ft.hide(this.homeLecture);
             }
+            if(this.isifrs.isAdded()){
+                ft.hide(this.isifrs);
+            }
         }
-        //2.home
+        //2.home mahasiswa
         else if (page==2){
             if(this.home.isAdded()){
                 ft.show(this.home);
@@ -176,6 +180,9 @@ public class MainActivity extends AppCompatActivity implements FragmentResultLis
             }
             if(this.homeLecture.isAdded()){
                 ft.hide(this.homeLecture);
+            }
+            if(this.isifrs.isAdded()){
+                ft.hide(this.isifrs);
             }
         }
         //3. pengumuman
@@ -228,6 +235,9 @@ public class MainActivity extends AppCompatActivity implements FragmentResultLis
             if(this.homeLecture.isAdded()){
                 ft.hide(this.homeLecture);
             }
+            if(this.isifrs.isAdded()){
+                ft.hide(this.isifrs);
+            }
         }
         //4. detail pengumuman
         else if (page==4){
@@ -278,6 +288,9 @@ public class MainActivity extends AppCompatActivity implements FragmentResultLis
             }
             if(this.homeLecture.isAdded()){
                 ft.hide(this.homeLecture);
+            }
+            if(this.isifrs.isAdded()){
+                ft.hide(this.isifrs);
             }
         }
         //5.buat pengumuman
@@ -330,6 +343,9 @@ public class MainActivity extends AppCompatActivity implements FragmentResultLis
             if(this.homeLecture.isAdded()){
                 ft.hide(this.homeLecture);
             }
+            if(this.isifrs.isAdded()){
+                ft.hide(this.isifrs);
+            }
         }
         //6.petemuan
         else if (page==6){
@@ -380,6 +396,9 @@ public class MainActivity extends AppCompatActivity implements FragmentResultLis
             }
             if(this.homeLecture.isAdded()){
                 ft.hide(this.homeLecture);
+            }
+            if(this.isifrs.isAdded()){
+                ft.hide(this.isifrs);
             }
         }
         //7.detail pertemuan
@@ -432,6 +451,9 @@ public class MainActivity extends AppCompatActivity implements FragmentResultLis
             if(this.homeLecture.isAdded()){
                 ft.hide(this.homeLecture);
             }
+            if(this.isifrs.isAdded()){
+                ft.hide(this.isifrs);
+            }
         }
         //8.buat pertemuan
         else if (page==8){
@@ -482,6 +504,9 @@ public class MainActivity extends AppCompatActivity implements FragmentResultLis
             }
             if(this.homeLecture.isAdded()){
                 ft.hide(this.homeLecture);
+            }
+            if(this.isifrs.isAdded()){
+                ft.hide(this.isifrs);
             }
         }
         //9. lihat jadwal dosen
@@ -534,6 +559,9 @@ public class MainActivity extends AppCompatActivity implements FragmentResultLis
             if(this.homeLecture.isAdded()){
                 ft.hide(this.homeLecture);
             }
+            if(this.isifrs.isAdded()){
+                ft.hide(this.isifrs);
+            }
         }
         //10.frs
         else if (page==10){
@@ -585,6 +613,9 @@ public class MainActivity extends AppCompatActivity implements FragmentResultLis
             if(this.homeLecture.isAdded()){
                 ft.hide(this.homeLecture);
             }
+            if(this.isifrs.isAdded()){
+                ft.hide(this.isifrs);
+            }
         }
         //11.history frs
         else if (page==11){
@@ -635,6 +666,9 @@ public class MainActivity extends AppCompatActivity implements FragmentResultLis
             }
             if(this.homeLecture.isAdded()){
                 ft.hide(this.homeLecture);
+            }
+            if(this.isifrs.isAdded()){
+                ft.hide(this.isifrs);
             }
         }
         //12.detail matkul
@@ -688,6 +722,9 @@ public class MainActivity extends AppCompatActivity implements FragmentResultLis
             if(this.homeLecture.isAdded()){
                 ft.hide(this.homeLecture);
             }
+            if(this.isifrs.isAdded()){
+                ft.hide(this.isifrs);
+            }
         }
         //13. admin buat user
         else if (page==13){
@@ -737,6 +774,9 @@ public class MainActivity extends AppCompatActivity implements FragmentResultLis
             }
             if(this.homeAdmin.isAdded()){
                 ft.hide(this.homeAdmin);
+            }
+            if(this.isifrs.isAdded()){
+                ft.hide(this.isifrs);
             }
         }
         //14.homeAdmin
@@ -789,6 +829,9 @@ public class MainActivity extends AppCompatActivity implements FragmentResultLis
             if(this.homeLecture.isAdded()){
                 ft.hide(this.homeLecture);
             }
+            if(this.isifrs.isAdded()){
+                ft.hide(this.isifrs);
+            }
 
         }
         //15.homeDosen
@@ -840,6 +883,63 @@ public class MainActivity extends AppCompatActivity implements FragmentResultLis
             }
             if(this.homeAdmin.isAdded()){
                 ft.hide(this.homeAdmin);
+            }
+            if(this.isifrs.isAdded()){
+                ft.hide(this.isifrs);
+            }
+        }
+        //isi frs
+        else if (page==16){
+            if(this.isifrs.isAdded()){
+                ft.show(this.isifrs);
+            } else {
+                ft.add(R.id.fragment_container, this.isifrs).addToBackStack(null);
+            }
+            if(this.login.isAdded()){
+                ft.hide(this.login);
+            }
+            if(this.home.isAdded()){
+                ft.hide(this.home);
+            }
+            if(this.pengumuman.isAdded()){
+                ft.hide(this.pengumuman);
+            }
+            if(this.detailPengumuman.isAdded()){
+                ft.hide(this.detailPengumuman);
+            }
+            if(this.buatPengumuman.isAdded()){
+                ft.hide(this.buatPengumuman);
+            }
+            if(this.pertemuan.isAdded()){
+                ft.hide(this.pertemuan);
+            }
+            if(this.detailPertemuan.isAdded()){
+                ft.hide(this.detailPertemuan);
+            }
+            if(this.buatPertemuan.isAdded()){
+                ft.hide(this.buatPertemuan);
+            }
+            if(this.lihatJadwalDosen.isAdded()){
+                ft.hide(this.lihatJadwalDosen);
+            }
+            if(this.frs.isAdded()){
+                ft.hide(this.frs);
+            }
+            if(this.hitoryFRS.isAdded()){
+                ft.hide(this.hitoryFRS);
+            }
+            if(this.detailMatkul.isAdded()){
+                ft.hide(this.detailMatkul);
+            }
+            //khusus admin
+            if(this.adminBuatUser.isAdded()){
+                ft.hide(this.adminBuatUser);
+            }
+            if(this.homeAdmin.isAdded()){
+                ft.hide(this.homeAdmin);
+            }
+            if(this.homeLecture.isAdded()){
+                ft.hide(this.homeLecture);
             }
         }
         ft.commit();

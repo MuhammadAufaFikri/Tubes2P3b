@@ -27,24 +27,24 @@ public class frsFragment  extends Fragment implements View.OnClickListener{
         super.onCreate(savedInstanceState);
         this.binding = FragmentFrsBinding.inflate(inflater,container,false);
         this.binding.keHistoryFrs.setOnClickListener(this);
+        this.binding.isiFrs.setOnClickListener(this);
         View view = this.binding.getRoot();
-        getParentFragmentManager().setFragmentResultListener("saveToken", this, new FragmentResultListener() {
-            @Override
-            public void onFragmentResult(@NonNull String requestKey, @NonNull Bundle result) {
-                token = result.getString("token");
-                getToken(token);
-            }
-        });
+        String name= saveToken.getName();
+        this.binding.namaOrang.setText(name);
         return view;
     }
-    private void getToken(String token) {
-        this.token=token;
-    }
+
     @Override
     public void onClick(View view) {
         if(this.binding.keHistoryFrs == view){
             Bundle result = new Bundle();
             result.putInt("page",11);//pindah ke history frs
+            this.getParentFragmentManager().setFragmentResult("Fragment History FRS", result);
+            this.getParentFragmentManager().setFragmentResult("changePage",result);
+        }
+        if (this.binding.isiFrs== view){
+            Bundle result = new Bundle();
+            result.putInt("page",16);//pindah ke isi frs
             this.getParentFragmentManager().setFragmentResult("Fragment History FRS", result);
             this.getParentFragmentManager().setFragmentResult("changePage",result);
         }

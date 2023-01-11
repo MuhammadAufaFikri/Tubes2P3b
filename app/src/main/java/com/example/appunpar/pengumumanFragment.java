@@ -48,8 +48,6 @@ public class pengumumanFragment  extends Fragment{
         return view;
     }
 
-
-
     public void loadDataAwal() {
         callVolleyPresent callvolleyPresent = callVolleyPresent.getInstance(getActivity().getApplicationContext());
         callvolleyPresent.callVolley(Request.Method.GET, "https://ifportal.labftis.net/api/v1/announcements", null, this.token, new callVolleyPresent.VolleyCallback() {
