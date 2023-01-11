@@ -29,20 +29,11 @@ public class pertemuanFragment extends Fragment{
         this.binding = FragmentPertemuanBinding.inflate(inflater,container,false);
         this.binding.keBuatPertemuan.setOnClickListener(this::onClick);
         this.binding.keLihatJadwalDosen.setOnClickListener(this::onClick);
+        this.token=saveToken.getToken();
         View view = this.binding.getRoot();
-        getParentFragmentManager().setFragmentResultListener("saveToken", this, new FragmentResultListener() {
-            @Override
-            public void onFragmentResult(@NonNull String requestKey, @NonNull Bundle result) {
-                token = result.getString("token");
-                getToken(token);
-            }
-        });
+
         return view;
     }
-    private void getToken(String token) {
-        this.token=token;
-    }
-
     private void onClick(View view) {
         if(this.binding.keBuatPertemuan==view){
             Bundle result = new Bundle();
@@ -58,7 +49,7 @@ public class pertemuanFragment extends Fragment{
         }
     }
     public void loadData() {
-        callVolleyPresent.callVolley(Request.Method.GET, "https://ifportal.labftis.net/api/v1/announcements", null, "YOUR_TOKEN", new callVolleyPresent.VolleyCallback() {
+        callVolleyPresent.callVolley(Request.Method.GET, "https://ifportal.labftis.net/api/v1/appointments/"+saveToken.getId(), null, this.token, new callVolleyPresent.VolleyCallback() {
             @Override
             public void onSuccessResponse(JSONObject result) {
 

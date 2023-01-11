@@ -50,7 +50,7 @@ public class pengumumanFragment  extends Fragment{
 
     public void loadDataAwal() {
         callVolleyPresent callvolleyPresent = callVolleyPresent.getInstance(getActivity().getApplicationContext());
-        callvolleyPresent.callVolley(Request.Method.GET, "https://ifportal.labftis.net/api/v1/announcements", null, this.token, new callVolleyPresent.VolleyCallback() {
+        callvolleyPresent.callVolley(Request.Method.GET, "https://ifportal.labftis.net/api/v1/announcements?limit=10", null, this.token, new callVolleyPresent.VolleyCallback() {
             @Override
             public void onSuccessResponse(JSONObject result) {
                 try {

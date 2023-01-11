@@ -49,11 +49,12 @@
             </TextView>
 
             <EditText
+                android:id="@+id/etTitle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@color/white"
                 android:hint="Insert Here"
-                android:textColor="@color/black"></EditText>
+                android:textColor="@color/black"/>
 
         </LinearLayout>
 
@@ -84,7 +85,7 @@
                     android:padding="5dp"
                     android:text="-"
                     android:textColor="@color/black"
-                    android:textSize="15dp"></TextView>
+                    android:textSize="15dp"/>
 
             </LinearLayout>
         </LinearLayout>
@@ -117,7 +118,7 @@
                     android:padding="5dp"
                     android:text="Jam mulai"
                     android:textColor="@color/black"
-                    android:textSize="15dp"></TextView>
+                    android:textSize="15dp"/>
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -138,7 +139,7 @@
                     android:padding="5dp"
                     android:text="Jam selesai"
                     android:textColor="@color/black"
-                    android:textSize="15dp"></TextView>
+                    android:textSize="15dp"/>
 
             </LinearLayout>
         </LinearLayout>
@@ -158,6 +159,7 @@
                 android:textSize="20dp"></TextView>
 
             <EditText
+                android:id="@+id/etdetail"
                 android:layout_width="fill_parent"
                 android:layout_height="250dp"
                 android:background="@color/white"
@@ -165,7 +167,7 @@
                 android:inputType="textMultiLine"
                 android:lines="5"
                 android:singleLine="false"
-                android:textColor="@color/black"></EditText>
+                android:textColor="@color/black"/>
 
         </LinearLayout>
 

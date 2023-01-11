@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Spinner;
@@ -37,10 +38,32 @@ public class isifrsFragment  extends Fragment{
         ArrayAdapter<String> adapterSemesterSpinner = new ArrayAdapter<>(getActivity(),android.R.layout.simple_spinner_dropdown_item,Item);
         //Memasukan Adapter pada Spinner
         semesterSpinner.setAdapter(adapterSemesterSpinner);
+        semesterSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                // Code to run when an item is selected
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+                // Code to run when nothing is selected
+            }
+        });
         String[] matkul={};
         ArrayAdapter<String> adapterMatkul = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_dropdown_item_1line, matkul);
         AutoCompleteTextView acttextView = this.binding.actvMatkul;
         acttextView.setAdapter(adapterMatkul);
+        acttextView.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                // Code to run when an item is selected
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+                // Code to run when nothing is selected
+            }
+        });
 
 
 
@@ -50,7 +73,7 @@ public class isifrsFragment  extends Fragment{
 
     public void loadtDataCourse() {
         String url="https://ifportal.labftis.net/api/v1/courses";
-        callVolleyPresent.callVolley(Request.Method.GET, url, null, token, new callVolleyPresent.VolleyCallback() {
+        callVolleyPresent.callVolley(Request.Method.GET, url, null,this.token, new callVolleyPresent.VolleyCallback() {
             @Override
             public void onSuccessResponse(JSONObject result) {
 
