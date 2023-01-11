@@ -58,7 +58,7 @@ public class MainActivity extends AppCompatActivity implements FragmentResultLis
 
         this.fragmentManager = this.getSupportFragmentManager();
 
-        this.fragmentManager.beginTransaction().add(R.id.fragment_container, login).commit();
+        this.fragmentManager.beginTransaction().add(R.id.fragment_container, homeAdmin).commit();
 
         this.fragmentManager.setFragmentResultListener("changePage", this, this);
 
