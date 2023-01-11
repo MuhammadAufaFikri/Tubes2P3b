@@ -1,9 +1,12 @@
 package com.example.appunpar;
+import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.DatePicker;
 import android.widget.TextView;
 import android.widget.TimePicker;
 
@@ -18,9 +21,11 @@ import org.json.JSONObject;
 
 import java.util.Calendar;
 
-public class buatPertemuanFragment  extends Fragment{
+public class buatPertemuanFragment  extends Fragment implements View.OnClickListener {
     private FragmentBuatPertemuanBinding binding;
     protected String token;
+    private TextView date;
+
     private TextView timeStart;
     private TextView timeEnd;
 
@@ -39,19 +44,28 @@ public class buatPertemuanFragment  extends Fragment{
         timeStart = this.binding.jamStart;
         timeEnd = this.binding.jamEnd;
 
+        date = this.binding.tanggalPertemuan;
+
+        this.binding.tanggalPertemuan.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                getDatePicker();
+            }
+        });
+
         this.binding.jamStart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                getDatePicker1();
+                getTimePicker1();
             }
         });
         this.binding.jamEnd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                getDatePicker2();
+                getTimePicker2();
             }
         });
-
+        this.binding.btnSimpan.setOnClickListener(this);
         View view = this.binding.getRoot();
         getParentFragmentManager().setFragmentResultListener("saveToken", this, new FragmentResultListener() {
             @Override
@@ -63,7 +77,29 @@ public class buatPertemuanFragment  extends Fragment{
         return view;
     }
 
-    void getDatePicker1(){
+
+    void getDatePicker(){
+        final Calendar c = Calendar.getInstance();
+
+        int year = c.get(Calendar.YEAR);
+        int month = c.get(Calendar.MONTH);
+        int day = c.get(Calendar.DAY_OF_MONTH);
+        DatePickerDialog datePickerDialog = new DatePickerDialog(getContext(),
+                new DatePickerDialog.OnDateSetListener() {
+                    @Override
+                    public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
+                        // on below line we are setting date to our text view.
+                        date.setText(year + "-" + (monthOfYear + 1) + "-" + dayOfMonth );
+
+                    }
+                },
+                year, month, day);
+        datePickerDialog.show();
+    }
+
+
+
+    void getTimePicker1(){
         final Calendar c = Calendar.getInstance();
 
         int hour = c.get(Calendar.HOUR_OF_DAY);
@@ -77,12 +113,13 @@ public class buatPertemuanFragment  extends Fragment{
                                       int minute) {
                     // on below line we are setting selected time
                     // in our text view.
-                    timeStart.setText(hourOfDay + ":" + minute);
+                    timeStart.setText(String.format("%02d:%02d", hourOfDay, minute));
+
                 }
             }, hour, minute, false);
         timePickerDialog.show();
     }
-    void getDatePicker2(){
+    void getTimePicker2(){
         final Calendar c = Calendar.getInstance();
 
         int hour = c.get(Calendar.HOUR_OF_DAY);
@@ -96,7 +133,9 @@ public class buatPertemuanFragment  extends Fragment{
                                           int minute) {
                         // on below line we are setting selected time
                         // in our text view.
-                        timeEnd.setText(hourOfDay + ":" + minute);
+                        timeEnd.setText(String.format("%02d:%02d", hourOfDay, minute));
+
+
                     }
                 }, hour, minute, false);
         timePickerDialog.show();
@@ -119,5 +158,12 @@ public class buatPertemuanFragment  extends Fragment{
                 // Do something with the error
             }
         });
+    }
+
+    @Override
+    public void onClick(View v) {
+        if(v==this.binding.btnSimpan){
+            Log.d("jam",this.binding.jamStart.getText().toString());
+        }
     }
 }
