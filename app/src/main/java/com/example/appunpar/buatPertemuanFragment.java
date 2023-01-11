@@ -89,8 +89,7 @@ public class buatPertemuanFragment  extends Fragment implements View.OnClickList
                     @Override
                     public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
                         // on below line we are setting date to our text view.
-                        date.setText(year + "-" + (monthOfYear + 1) + "-" + dayOfMonth );
-
+                        date.setText(year + "-" + String.format("%02d", monthOfYear + 1) + "-" + String.format("%02d",dayOfMonth ));
                     }
                 },
                 year, month, day);

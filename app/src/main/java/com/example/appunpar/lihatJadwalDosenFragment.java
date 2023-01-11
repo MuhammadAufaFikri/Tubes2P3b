@@ -96,7 +96,7 @@ public class lihatJadwalDosenFragment extends Fragment{
                     @Override
                     public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
                         // on below line we are setting date to our text view.
-                        tglStart.setText(year + "-" + (monthOfYear + 1) + "-" + dayOfMonth );
+                        tglStart.setText(year + "-" + String.format("%02d", monthOfYear + 1) + "-" + String.format("%02d",dayOfMonth ));
 
                     }
                 },
@@ -114,7 +114,7 @@ public class lihatJadwalDosenFragment extends Fragment{
                     @Override
                     public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
                         // on below line we are setting date to our text view.
-                        tglEnd.setText(year + "-" + (monthOfYear + 1) + "-" + dayOfMonth );
+                        tglEnd.setText(year + "-" + String.format("%02d", monthOfYear + 1) + "-" + String.format("%02d",dayOfMonth ));
 
                     }
                 },
