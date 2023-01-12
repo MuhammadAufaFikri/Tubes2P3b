@@ -159,7 +159,7 @@
                 android:textSize="20dp"></TextView>
 
             <EditText
-                android:id="@+id/etdetail"
+                android:id="@+id/detail"
                 android:layout_width="fill_parent"
                 android:layout_height="250dp"
                 android:background="@color/white"

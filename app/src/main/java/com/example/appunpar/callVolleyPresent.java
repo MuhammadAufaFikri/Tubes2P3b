@@ -58,9 +58,11 @@ public class callVolleyPresent {
                     @Override
                     public void onErrorResponse(VolleyError error) {
                         try {
-                            String responseBody = new String(error.networkResponse.data, "utf-8");
-                            JSONObject data = new JSONObject(responseBody);
-                            callback.onErrorResponse(data);
+                            if(error.networkResponse != null) {
+                                String responseBody = new String(error.networkResponse.data, "utf-8");
+                                JSONObject data = new JSONObject(responseBody);
+                                callback.onErrorResponse(data);
+                            }
                         } catch (JSONException | UnsupportedEncodingException e) {
                             e.printStackTrace();
                         }

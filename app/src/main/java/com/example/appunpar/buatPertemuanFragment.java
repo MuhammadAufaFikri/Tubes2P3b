@@ -40,12 +40,13 @@ public class buatPertemuanFragment  extends Fragment implements View.OnClickList
         args.putString("title", title);
         fragment.setArguments(args);
 
+
         return fragment;
     }
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         this.binding = FragmentBuatPertemuanBinding.inflate(inflater,container,false);
-
+        this.token=saveToken.getToken();
         //timepicker
         timeStart = this.binding.jamStart;
         timeEnd = this.binding.jamEnd;
@@ -73,7 +74,6 @@ public class buatPertemuanFragment  extends Fragment implements View.OnClickList
         });
         this.binding.btnSimpan.setOnClickListener(this);
         View view = this.binding.getRoot();
-        this.token=saveToken.getToken();
         return view;
     }
 
@@ -154,6 +154,9 @@ public class buatPertemuanFragment  extends Fragment implements View.OnClickList
             @Override
             public void onErrorResponse(JSONObject error) {
                 // Do something with the error
+                Toast toast = Toast.makeText(getActivity(), "pertemuan gagal dibuat", Toast.LENGTH_SHORT);
+                toast.setGravity(Gravity.BOTTOM, 0, 0);
+                toast.show();
             }
         });
     }
@@ -163,7 +166,7 @@ public class buatPertemuanFragment  extends Fragment implements View.OnClickList
         if(v==this.binding.btnSimpan){
             Log.d("jam",this.binding.jamStart.getText().toString());
             String title= this.binding.etTitle.getText().toString();
-            String description=this.binding.etdetail.getText().toString();
+            String description=this.binding.detail.getText().toString();
             String start_datetime=this.binding.tanggalPertemuan.getText().toString()+" "+this.binding.jamStart.getText().toString()+"+0700";
             String end_datetime=this.binding.tanggalPertemuan.getText().toString()+" "+this.binding.jamEnd.getText().toString()+"+0700";
             this.gson = new Gson();

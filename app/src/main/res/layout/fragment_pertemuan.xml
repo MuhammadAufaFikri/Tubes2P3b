@@ -5,6 +5,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/purple"
     android:orientation="vertical">
+
     <LinearLayout
         android:layout_width="360dp"
         android:layout_height="match_parent"
@@ -12,57 +13,49 @@
         android:orientation="vertical">
 
         <LinearLayout
-            android:layout_marginTop="20dp"
+            android:id="@+id/header_pengumuman"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/header_pengumuman">
+            android:layout_marginTop="20dp">
 
             <ImageView
                 android:layout_width="70dp"
                 android:layout_height="70dp"
-                android:src="@drawable/logo_unpar">
-            </ImageView>
+                android:src="@drawable/logo_unpar"></ImageView>
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:paddingLeft="10dp"
                 android:text="Pertemuan"
                 android:textColor="@color/white"
                 android:textSize="30sp"
-                android:textStyle="bold"
-                android:paddingLeft="10dp"
-                android:layout_marginTop="15dp">
-            </TextView>
+                android:textStyle="bold"></TextView>
         </LinearLayout>
 
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
             <Button
                 android:id="@+id/keLihatJadwalDosen"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Lihat Jadwal Dosen"
-                android:backgroundTint="@color/green_2">
+                android:layout_weight="1"
+                android:backgroundTint="@color/green_2"
+                android:text="Lihat Jadwal Dosen">
 
             </Button>
-
         </LinearLayout>
-        <LinearLayout
+
+        <ListView
+            android:id="@+id/listPertemuan"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <EditText
-                android:textColor="@color/black"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@color/white"
-                android:hint="Insert Here"
-                android:layout_marginTop="10dp">
-
-            </EditText>
-        </LinearLayout>
+            android:layout_height="match_parent"
+            />
     </LinearLayout>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
